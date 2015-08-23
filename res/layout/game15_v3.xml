@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true">
+    <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:id="@+id/rlContain"
+
+            android:layout_above="@+id/llButtonsLine">
+        <com.RaenarApps.Game15.SquareLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/customView"
+                android:layout_alignParentTop="true" android:layout_centerHorizontal="true" android:gravity="center">
+            <FrameLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/frameLayout">
+                <include layout="@layout/cheat_view" />
+
+            <TableLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:stretchColumns="*"
+                    android:id="@+id/tableLayout">
+
+                <TableRow>
+
+                    <com.RaenarApps.Game15.SquareButton android:id="@+id/button11" android:visibility="visible"
+                                             android:layout_margin="1dp"/>
+
+                    <com.RaenarApps.Game15.SquareButton android:id="@+id/button12" android:visibility="visible"
+                                             android:layout_margin="1dp"/>
+
+                    <com.RaenarApps.Game15.SquareButton android:id="@+id/button13" android:visibility="visible"
+                                             android:layout_margin="1dp"/>
+
+                    <com.RaenarApps.Game15.SquareButton android:id="@+id/button14" android:visibility="visible"
+                                             android:layout_margin="1dp"/>
+                </TableRow>
+
+                <TableRow>
+
+                    <com.RaenarApps.Game15.SquareButton android:id="@+id/button21" android:visibility="visible"
+                                             android:layout_margin="1dp"/>
+
+                    <com.RaenarApps.Game15.SquareButton android:id="@+id/button22" android:visibility="visible"
+                                             android:layout_margin="1dp"/>
+
+                    <com.RaenarApps.Game15.SquareButton android:id="@+id/button23" android:visibility="visible"
+                                             android:layout_margin="1dp"/>
+
+                    <com.RaenarApps.Game15.SquareButton android:id="@+id/button24" android:visibility="visible"
+                                             android:layout_margin="1dp"/>
+                </TableRow>
+
+                <TableRow>
+
+                    <com.RaenarApps.Game15.SquareButton android:id="@+id/button31" android:visibility="visible"
+                                             android:layout_margin="1dp"/>
+
+                    <com.RaenarApps.Game15.SquareButton android:id="@+id/button32" android:visibility="visible"
+                                             android:layout_margin="1dp"/>
+
+                    <com.RaenarApps.Game15.SquareButton android:id="@+id/button33" android:visibility="visible"
+                                             android:layout_margin="1dp"/>
+
+                    <com.RaenarApps.Game15.SquareButton android:id="@+id/button34" android:visibility="visible"
+                                             android:layout_margin="1dp"/>
+                </TableRow>
+
+                <TableRow>
+
+                    <com.RaenarApps.Game15.SquareButton android:id="@+id/button41" android:visibility="visible"
+                                             android:layout_margin="1dp"/>
+
+                    <com.RaenarApps.Game15.SquareButton android:id="@+id/button42" android:visibility="visible"
+                                             android:layout_margin="1dp"/>
+
+                    <com.RaenarApps.Game15.SquareButton android:id="@+id/button43" android:visibility="visible"
+                                             android:layout_margin="1dp"/>
+
+                    <com.RaenarApps.Game15.SquareButton android:id="@+id/button44" android:visibility="visible"
+                                             android:layout_margin="1dp"/>
+                </TableRow>
+            </TableLayout>
+            </FrameLayout>
+        </com.RaenarApps.Game15.SquareLayout>
+    </RelativeLayout>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/llButtonsLine"
+            android:gravity="center" android:background="#fffcffff" android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true" android:layout_alignParentStart="true">
+
+        <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="@string/game_Show_Hint"
+                android:layout_below="@+id/customView"
+                style="@android:style/Widget.Button" android:id="@+id/bttnEasyMix"
+                android:height="50dp" android:width="120dp" android:textSize="15sp"
+                android:onClick="showHint" android:background="#00000000"/>
+        <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="@string/game_Menu"
+                style="@android:style/Widget.Button" android:id="@+id/bttnRandomMix"
+                android:height="50dp" android:width="120dp" android:textSize="15sp"
+                android:onClick="backToMenu"
+                android:background="#00000000" android:visibility="invisible"/>
+        <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="@string/game_Options"
+                style="@android:style/Widget.Button" android:id="@+id/bttnOptions"
+                android:height="50dp" android:width="120dp" android:textSize="15sp"
+                android:onClick="options"
+                android:background="#00000000"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

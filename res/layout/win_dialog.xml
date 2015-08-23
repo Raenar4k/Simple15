@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+              android:layout_margin="3dp"
+        android:gravity="center_horizontal" android:background="@android:color/white">
+
+    <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView2"
+            android:src="@drawable/top_bamboo"
+            android:layout_alignParentEnd="true" android:layout_alignParentRight="true"
+            android:adjustViewBounds="true"/>
+    <TextView android:layout_width="200dp" android:layout_height="wrap_content"
+              android:text="@string/win_congratulations"
+              android:textSize="20sp"
+              android:textColor="@color/green_main"
+              android:id="@+id/tvTitle" android:layout_gravity="center"
+            android:gravity="center"
+              android:enabled="false"
+              android:visibility="visible"
+              android:autoText="false"
+              android:layout_centerVertical="true" android:layout_centerHorizontal="true" android:paddingTop="40dp"/>
+
+</RelativeLayout>
