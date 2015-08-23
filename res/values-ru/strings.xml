@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Simple 15</string>
+
+    <string name="game_Options">Опции</string>
+    <string name="game_Menu">Меню</string>
+    <string name="game_Show_Hint">Подсказка</string>
+
+    <string name="loading_Loading">Загрузка</string>
+
+    <string name="mMenu_How_To">Как играть?</string>
+    <string name="mMenu_New_Game">Новая игра</string>
+    <string name="mMenu_continue">Продолжить</string>
+
+    <string name="oMenu_Adaptive_OFF">Адаптивный фон: ВЫКЛ</string>
+    <string name="oMenu_Adaptive_ON">Адаптивный фон: ВКЛ</string>
+    <string name="oMenu_Change_Image">Сменить изображение</string>
+    <string name="oMenu_Hybrid_Mode">Смешанный режим</string>
+    <string name="oMenu_Image_Mode">Режим изображения</string>
+    <string name="oMenu_Mix_Up">Перемешать</string>
+    <string name="oMenu_Simple_Mode">Упрощенный режим</string>
+
+    <string name="toast_No_Image_Picked">Вы не выбрали изображение</string>
+    <string name="toast_Something_Went_Wrong">Что то пошло не так</string>
+
+    <string name="list_Select_Image">Выберите изображение</string>
+    <string name="dialog_ok">OK!</string>
+    <string name="win_dialog_return">Вернуться в меню</string>
+    <string name="dialog_no">Нет</string>
+    <string name="dialog_yes">Да</string>
+    <string name="item_delete_delete">Вы хотите удалить это изображение?</string>
+    <string name="item_edit_Title">Введите новое название для изображения</string>
+    <string name="item_edit_clear">Очистить</string>
+    <string name="win_congratulations">Поздравляем! Вы успешно собрали головоломку!</string>
+</resources>

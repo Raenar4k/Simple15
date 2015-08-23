@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="dialogStyle" parent="@android:style/Theme.DeviceDefault.Light.Dialog">
+
+    </style>
+</resources>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:padding="3dp"
+                android:descendantFocusability="blocksDescendants">
+
+    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+               android:id="@+id/imageThumbnail"
+               android:src="@drawable/thumbnail"/>
+
+    <TextView
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:id="@+id/imageTitle"
+            android:text="Good picture yes"
+            android:textStyle="bold"
+            android:layout_marginLeft="20dp"
+            android:layout_centerVertical="true" android:layout_toEndOf="@+id/imageThumbnail"
+            android:layout_toRightOf="@+id/imageThumbnail"/>
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true" android:layout_centerVertical="true">
+        <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/editButton"
+                android:focusable="false"
+                android:src="@drawable/ic_create_white_48dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true" android:background="@android:color/transparent"
+                android:layout_margin="10dp"/>
+
+        <ImageButton
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:id="@+id/deleteButton"
+                android:src="@drawable/ic_clear_white_48dp"
+                android:layout_below="@id/editButton" android:background="@android:color/transparent"
+                android:layout_margin="10dp"/>
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Simple 15</string>
+
+    <!--"Main Menu"-->
+    <string name="mMenu_continue">Continue</string>
+    <string name="mMenu_New_Game">New Game</string>
+    <string name="mMenu_How_To">How to play?</string>
+
+    <!--"Game 15"-->
+    <string name="game_Show_Hint">Show hint</string>
+    <string name="game_Menu">Menu</string>
+    <string name="game_Options">Options</string>
+
+    <!--"Options Menu"-->
+    <string name="oMenu_Simple_Mode">Simple Mode</string>
+    <string name="oMenu_Image_Mode">Image Mode</string>
+    <string name="oMenu_Hybrid_Mode">Hybrid Mode</string>
+    <string name="oMenu_Change_Image">Change image</string>
+    <string name="oMenu_Adaptive_ON">Adaptive Background: ON</string>
+    <string name="oMenu_Adaptive_OFF">Adaptive Background: OFF</string>
+    <string name="oMenu_Mix_Up">Mix up</string>
+
+    <!--"Loading Dialog"-->
+    <string name="loading_Loading">Loading</string>
+
+    <!--"Image List"-->
+    <string name="list_Select_Image">Select image</string>
+
+    <!--"Toasts when handling user added image"-->
+    <string name="toast_No_Image_Picked">You haven\'t picked Image</string>
+    <string name="toast_Something_Went_Wrong">Something went wrong</string>
+
+    <!--"Win Dialog"-->
+    <string name="win_dialog_return">Return to Menu</string>
+
+    <!--"List item Dialogs"-->
+    <string name="item_edit_Title">Enter new title</string>
+    <string name="item_edit_clear">Clear</string>
+    <string name="item_delete_delete">Do you wish to delete this image?</string>
+
+    <!--"General for Dialogs"-->
+    <string name="dialog_ok">OK!</string>
+    <string name="dialog_yes">Yes</string>
+    <string name="dialog_no">No</string>
+    <string name="win_congratulations">Congratulations! You have completed the puzzle!</string>
+
+</resources>

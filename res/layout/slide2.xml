@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent" android:background="@android:color/white">
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Перед началом игры вам будет предложено выбрать изображение из которого будет составлена головоломка"
+            android:textSize="20sp"
+            android:id="@+id/textView" android:layout_gravity="center_horizontal"
+            android:textColor="@android:color/black" android:layout_margin="10dp"/>
+    <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView"
+            android:layout_below="@+id/textView"
+            android:src="@drawable/slide2" android:layout_above="@+id/textView2"
+            android:layout_centerInParent="true"/>
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+              android:text="Вы также можете добавить свое изображение, нажав на кнопку &quot;+&quot;"
+              android:textSize="20sp" android:id="@+id/textView2" android:layout_gravity="center_horizontal"
+              android:textColor="@android:color/black"
+              android:layout_alignParentBottom="true" android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true" android:layout_marginLeft="10dp" android:layout_marginTop="10dp"
+              android:layout_marginRight="10dp" android:layout_marginBottom="40dp"/>
+</RelativeLayout>

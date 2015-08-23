@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/simpleMode"
+          android:title="@string/oMenu_Simple_Mode" />
+    <item android:id="@+id/imageMode"
+          android:title="@string/oMenu_Image_Mode" />
+    <item android:id="@+id/hybridMode"
+          android:title="@string/oMenu_Hybrid_Mode" />
+    <item android:id="@+id/selectImage"
+          android:title="@string/oMenu_Change_Image" />
+    <item android:id="@+id/adaptiveBackground"
+          android:title="@string/oMenu_Adaptive_ON" />
+    <item android:id="@+id/mixUp"
+          android:title="@string/oMenu_Mix_Up" />
+</menu>
