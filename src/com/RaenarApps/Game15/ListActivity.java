@@ -119,8 +119,8 @@ public class ListActivity extends Activity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
                 Intent intent = new Intent();
-                intent.putExtra(FifteenActivity.IMAGE_PATH, imageList.get(i).getImagePath());
-                intent.putExtra(FifteenActivity.IS_DEFAULT, imageList.get(i).isDefault());
+                intent.putExtra(Image.IMAGE_PATH, imageList.get(i).getImagePath());
+                intent.putExtra(Image.IS_DEFAULT, imageList.get(i).isDefault());
                 setResult(RESULT_OK, intent);
                 finish();
             }

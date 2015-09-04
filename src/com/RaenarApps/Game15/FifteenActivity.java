@@ -34,8 +34,6 @@ public class FifteenActivity extends Activity {
     public static final String ARRAY = "Array";
     public static final String EMPTY_SPACE_X = "Empty space x";
     public static final String EMPTY_SPACE_Y = "Empty space y";
-    public static final String IMAGE_PATH = "ImagePath";
-    public static final String IS_DEFAULT = "isDefault";
     public static final String IS_NEW_GAME = "IsNewGame";
 
     private Button[][] buttons = new Button[ROW_COUNT][COLUMN_COUNT];
@@ -81,8 +79,8 @@ public class FifteenActivity extends Activity {
             while (!isGameWinnable()) {
                 generateRandomArray();
             }
-            imagePathGlobal = intent.getStringExtra(IMAGE_PATH);
-            isDefaultGlobal = intent.getBooleanExtra(IS_DEFAULT, false);
+            imagePathGlobal = intent.getStringExtra(Image.IMAGE_PATH);
+            isDefaultGlobal = intent.getBooleanExtra(Image.IS_DEFAULT, false);
         } else {
             String arrayString = sharedPreferences.getString(FifteenActivity.ARRAY, "");
             StringTokenizer st = new StringTokenizer(arrayString, ",");
@@ -93,8 +91,8 @@ public class FifteenActivity extends Activity {
             }
             emptySpace.setX(sharedPreferences.getInt(EMPTY_SPACE_X, 20));
             emptySpace.setY(sharedPreferences.getInt(EMPTY_SPACE_Y, 20));
-            imagePathGlobal = sharedPreferences.getString(IMAGE_PATH, "backgrounds/pollen.jpg");
-            isDefaultGlobal = sharedPreferences.getBoolean(IS_DEFAULT, true);
+            imagePathGlobal = sharedPreferences.getString(Image.IMAGE_PATH, "backgrounds/pollen.jpg");
+            isDefaultGlobal = sharedPreferences.getBoolean(Image.IS_DEFAULT, true);
         }
         TaskLoadImage taskLoadImage = new TaskLoadImage(this, imagePathGlobal, isDefaultGlobal,
                 chunkedImages, backgroundColor);
@@ -429,9 +427,9 @@ public class FifteenActivity extends Activity {
         super.onActivityResult(requestCode, resultCode, data);
         switch (requestCode) {
             case RC_List:
-                if ((resultCode == RESULT_OK) && (data.hasExtra(IMAGE_PATH))) {
-                    imagePathGlobal = data.getStringExtra(IMAGE_PATH);
-                    isDefaultGlobal = data.getBooleanExtra(IS_DEFAULT, false);
+                if ((resultCode == RESULT_OK) && (data.hasExtra(Image.IMAGE_PATH))) {
+                    imagePathGlobal = data.getStringExtra(Image.IMAGE_PATH);
+                    isDefaultGlobal = data.getBooleanExtra(Image.IS_DEFAULT, false);
                     TaskLoadImage taskLoadImage = new TaskLoadImage(this, imagePathGlobal, isDefaultGlobal,
                             chunkedImages, backgroundColor);
                     taskLoadImage.execute();
@@ -454,8 +452,8 @@ public class FifteenActivity extends Activity {
         editor.putString(ARRAY, str.toString());
         editor.putInt(EMPTY_SPACE_X, emptySpace.getX());
         editor.putInt(EMPTY_SPACE_Y, emptySpace.getY());
-        editor.putString(IMAGE_PATH, imagePathGlobal);
-        editor.putBoolean(IS_DEFAULT, isDefaultGlobal);
+        editor.putString(Image.IMAGE_PATH, imagePathGlobal);
+        editor.putBoolean(Image.IS_DEFAULT, isDefaultGlobal);
         editor.putBoolean(IS_NEW_GAME, false);
         editor.apply();
     }

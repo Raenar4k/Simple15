@@ -11,6 +11,11 @@ public class Image implements Serializable{
     private String thumbnailPath;
     private boolean isDefault;
 
+    public static final String IMAGE_PATH = "ImagePath";
+    public static final String IS_DEFAULT = "isDefault";
+    public static final String THUMBNAIL_PATH = "ThumbnailPath";
+
+
     public Image(String title, String imagePath, String thumbnailPath, boolean isDefault) {
         this.title = title;
         this.imagePath = imagePath;

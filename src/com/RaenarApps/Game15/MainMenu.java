@@ -58,15 +58,15 @@ public class MainMenu extends Activity {
                 String imagePathGlobal;
                 boolean isDefaultGlobal;
                 Intent intent = new Intent(this, FifteenActivity.class);
-                if ((resultCode == RESULT_OK) && (data.hasExtra(FifteenActivity.IMAGE_PATH))) {
-                    imagePathGlobal = data.getStringExtra(FifteenActivity.IMAGE_PATH);
-                    isDefaultGlobal = data.getBooleanExtra(FifteenActivity.IS_DEFAULT, false);
+                if ((resultCode == RESULT_OK) && (data.hasExtra(Image.IMAGE_PATH))) {
+                    imagePathGlobal = data.getStringExtra(Image.IMAGE_PATH);
+                    isDefaultGlobal = data.getBooleanExtra(Image.IS_DEFAULT, false);
                 } else {
                     imagePathGlobal = "backgrounds/pollen.jpg";
                     isDefaultGlobal = true;
                 }
-                intent.putExtra(FifteenActivity.IMAGE_PATH, imagePathGlobal);
-                intent.putExtra(FifteenActivity.IS_DEFAULT, isDefaultGlobal);
+                intent.putExtra(Image.IMAGE_PATH, imagePathGlobal);
+                intent.putExtra(Image.IS_DEFAULT, isDefaultGlobal);
                 intent.putExtra(FifteenActivity.IS_NEW_GAME, true);
                 setResult(RESULT_OK, intent);
                 startActivityForResult(intent, REQUEST_UPDATE);
