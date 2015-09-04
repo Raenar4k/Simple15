@@ -30,6 +30,7 @@ public class FifteenActivity extends Activity {
 
     public static final String PREFERENCES = "Simple15prefs";
 
+    //Various keys
     public static final String ARRAY = "Array";
     public static final String EMPTY_SPACE_X = "Empty space x";
     public static final String EMPTY_SPACE_Y = "Empty space y";
@@ -102,6 +103,7 @@ public class FifteenActivity extends Activity {
     }
 
     private boolean isGameWinnable() {
+        //https://en.wikipedia.org/wiki/15_puzzle#Solvability
         int inversionsNumber = 0;
         int emptySpaceRow = -1;
         int previousNumber = array[0][0];
@@ -128,6 +130,7 @@ public class FifteenActivity extends Activity {
                         Button clickedButton = (Button) view;
                         Point clickedPoint = getClickedPoint(clickedButton);
                         if (clickedPoint != null && canMove(clickedPoint)) {
+                            //Swaping tile with empty space
                             String clickedButtonText = clickedButton.getText().toString();
                             clickedButton.setVisibility(View.INVISIBLE);
                             clickedButton.setText("0");
@@ -145,7 +148,6 @@ public class FifteenActivity extends Activity {
                             emptySpace.setY(clickedPoint.getY());
 
                             if (isGameWon()) {
-//                                Toast.makeText(getApplicationContext(), "YOU WIN", Toast.LENGTH_SHORT).show();
                                 showWinDialog();
                             }
                         }
