@@ -30,34 +30,14 @@ public class ListActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_gallery);
-        File dataFile = new File(Environment.getExternalStorageDirectory()
-                + "/Android/data/"
-                + getApplicationContext().getPackageName() + File.separator
-                + DATA_FILE);
-        if (dataFile.exists()) {
-//            loadData(dataFile);
+
+        File database = getApplicationContext().getDatabasePath(DBHelper.DB_NAME);
+        if (database.exists()) {
             loadList();
             fillImageList();
         } else {
             createImageList();
             fillImageList();
-        }
-    }
-
-    private void loadData(File file) {
-        FileInputStream fis = null;
-        try {
-            fis = new FileInputStream(file);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        ObjectInputStream ois;
-        try {
-            ois = new ObjectInputStream(fis);
-            imageList = (ArrayList<Image>) ois.readObject();
-            ois.close();
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
         }
     }
 
@@ -121,7 +101,7 @@ public class ListActivity extends Activity {
                 String image = cursor.getString(imageIndex);
                 String thumbnail = cursor.getString(thumbnailIndex);
                 boolean isDefault = cursor.getInt(isDefaultIndex) != 0;
-                imageList.add(new Image(title,image,thumbnail,isDefault));
+                imageList.add(new Image(title, image, thumbnail, isDefault));
             } while (cursor.moveToNext());
         } else {
             Toast.makeText(this, "empty table", Toast.LENGTH_SHORT).show();
@@ -151,7 +131,7 @@ public class ListActivity extends Activity {
         imageList.add(new Image("Space", "backgrounds/space.jpg", "thumbnails/thumbnail_Space.jpg", true));
         imageList.add(new Image("Zen", "backgrounds/zen.jpg", "thumbnails/thumbnail_Zen.jpg", true));
 
-        saveData();
+//        saveData();
         saveList();
     }
 
