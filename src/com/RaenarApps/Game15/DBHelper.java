@@ -13,7 +13,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String DB_NAME = "listDB.db";
     public static final String TABLE_NAME = "listTable";
 
-    public DBHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
+    public DBHelper(Context context) {
         super(context, DB_NAME, null, VERSION);
     }
 

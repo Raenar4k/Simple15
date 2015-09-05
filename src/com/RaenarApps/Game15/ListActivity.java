@@ -1,7 +1,10 @@
 package com.RaenarApps.Game15;
 
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -32,7 +35,8 @@ public class ListActivity extends Activity {
                 + getApplicationContext().getPackageName() + File.separator
                 + DATA_FILE);
         if (dataFile.exists()) {
-            loadData(dataFile);
+//            loadData(dataFile);
+            loadList();
             fillImageList();
         } else {
             createImageList();
@@ -87,6 +91,46 @@ public class ListActivity extends Activity {
         }
     }
 
+    public void saveList() {
+        DBHelper dbHelper = new DBHelper(this);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        for (int i = 0; i < imageList.size(); i++) {
+            ContentValues cv = new ContentValues();
+            cv.put(Image.TITLE, imageList.get(i).getTitle());
+            cv.put(Image.IMAGE_PATH, imageList.get(i).getImagePath());
+            cv.put(Image.THUMBNAIL_PATH, imageList.get(i).getThumbnailPath());
+            cv.put(Image.IS_DEFAULT, (imageList.get(i).isDefault() ? 1 : 0));
+            db.insert(DBHelper.TABLE_NAME, null, cv);
+        }
+        Toast.makeText(this, "Saved to SQL", Toast.LENGTH_SHORT).show();
+        db.close();
+    }
+
+    public void loadList() {
+        DBHelper dbHelper = new DBHelper(this);
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.query(DBHelper.TABLE_NAME, null, null, null, null, null, null);
+        if (cursor.moveToNext()) {
+            int titleIndex = cursor.getColumnIndex(Image.TITLE);
+            int imageIndex = cursor.getColumnIndex(Image.IMAGE_PATH);
+            int thumbnailIndex = cursor.getColumnIndex(Image.THUMBNAIL_PATH);
+            int isDefaultIndex = cursor.getColumnIndex(Image.IS_DEFAULT);
+            imageList = new ArrayList<Image>();
+            do {
+                String title = cursor.getString(titleIndex);
+                String image = cursor.getString(imageIndex);
+                String thumbnail = cursor.getString(thumbnailIndex);
+                boolean isDefault = cursor.getInt(isDefaultIndex) != 0;
+                imageList.add(new Image(title,image,thumbnail,isDefault));
+            } while (cursor.moveToNext());
+        } else {
+            Toast.makeText(this, "empty table", Toast.LENGTH_SHORT).show();
+        }
+        Toast.makeText(this, "Loaded from SQL", Toast.LENGTH_SHORT).show();
+        cursor.close();
+        db.close();
+    }
+
     private void createImageList() {
         imageList = new ArrayList<Image>();
 
@@ -108,6 +152,7 @@ public class ListActivity extends Activity {
         imageList.add(new Image("Zen", "backgrounds/zen.jpg", "thumbnails/thumbnail_Zen.jpg", true));
 
         saveData();
+        saveList();
     }
 
     public void fillImageList() {
@@ -125,7 +170,7 @@ public class ListActivity extends Activity {
                 finish();
             }
         });
-
+        Toast.makeText(this, "" + imageList.size(), Toast.LENGTH_SHORT).show();
     }
 
     @Override
