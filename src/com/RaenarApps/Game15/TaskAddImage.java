@@ -2,7 +2,9 @@ package com.RaenarApps.Game15;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.ContentValues;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -66,13 +68,17 @@ public class TaskAddImage extends AsyncTask<Uri, Void, Void> {
         String backgroundPath = saveBitmap(background, imgTitle, false);
         imageList_TASK.add(new Image(imgTitle, backgroundPath, thumbnailPath, false));
 
-        File dataFile = new File(Environment.getExternalStorageDirectory()
-                + "/Android/data/"
-                + activity.getPackageName() + File.separator
-                + ListActivity.DATA_FILE);
-        saveData(dataFile);
-        cursor.close();
-        return null;
+        DBHelper dbHelper = new DBHelper(activity);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(Image.TITLE, imgTitle);
+        cv.put(Image.IMAGE_PATH, backgroundPath);
+        cv.put(Image.THUMBNAIL_PATH, thumbnailPath);
+        cv.put(Image.IS_DEFAULT, 0);
+        db.insert(DBHelper.TABLE_NAME, null, cv);
+
+    cursor.close();
+    return null;
     }
 
     @Override
@@ -83,27 +89,6 @@ public class TaskAddImage extends AsyncTask<Uri, Void, Void> {
         dialog.dismiss();
         super.onPostExecute(aVoid);
     }
-
-    private void saveData(File dataFile) {
-        FileOutputStream fos = null;
-        try {
-            fos = new FileOutputStream(dataFile);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        ObjectOutputStream oos;
-        if (fos != null) {
-            try {
-                oos = new ObjectOutputStream(fos);
-                oos.writeObject(imageList_TASK);
-                oos.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-        }
-    }
-
 
     private Bitmap getScaledBackground(String imagePath, boolean isDefault) {
         Display display = activity.getWindowManager().getDefaultDisplay();

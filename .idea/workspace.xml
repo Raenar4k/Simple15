@@ -17,19 +17,17 @@
       <config />
     </shared>
   </component>
+  <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="app: com.RaenarApps.Game15" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="b59e3b80-cc87-4f8a-8e03-ac100ff329b9" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Simple15/com/RaenarApps/Game15/FifteenActivity$1.class" afterPath="$PROJECT_DIR$/out/production/Simple15/com/RaenarApps/Game15/FifteenActivity$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Simple15/com/RaenarApps/Game15/FifteenActivity.class" afterPath="$PROJECT_DIR$/out/production/Simple15/com/RaenarApps/Game15/FifteenActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Simple15/com/RaenarApps/Game15/Image.class" afterPath="$PROJECT_DIR$/out/production/Simple15/com/RaenarApps/Game15/Image.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Simple15/com/RaenarApps/Game15/ListActivity$1.class" afterPath="$PROJECT_DIR$/out/production/Simple15/com/RaenarApps/Game15/ListActivity$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Simple15/com/RaenarApps/Game15/ListActivity.class" afterPath="$PROJECT_DIR$/out/production/Simple15/com/RaenarApps/Game15/ListActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Simple15/com/RaenarApps/Game15/MainMenu.class" afterPath="$PROJECT_DIR$/out/production/Simple15/com/RaenarApps/Game15/MainMenu.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Simple15/Simple15.apk" afterPath="$PROJECT_DIR$/out/production/Simple15/Simple15.apk" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Simple15/Simple15.unaligned.apk" afterPath="$PROJECT_DIR$/out/production/Simple15/Simple15.unaligned.apk" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/RaenarApps/Game15/DBHelper.java" afterPath="$PROJECT_DIR$/src/com/RaenarApps/Game15/DBHelper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Simple15/com/RaenarApps/Game15/TaskAddImage.class" afterPath="$PROJECT_DIR$/out/production/Simple15/com/RaenarApps/Game15/TaskAddImage.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/RaenarApps/Game15/ListActivity.java" afterPath="$PROJECT_DIR$/src/com/RaenarApps/Game15/ListActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/RaenarApps/Game15/TaskAddImage.java" afterPath="$PROJECT_DIR$/src/com/RaenarApps/Game15/TaskAddImage.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Simple15.iws" />
@@ -55,8 +53,28 @@
       <file leaf-file-name="ListActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/RaenarApps/Game15/ListActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.54393303">
-              <caret line="109" column="47" selection-start-line="109" selection-start-column="47" selection-end-line="109" selection-end-column="47" />
+            <state vertical-scroll-proportion="-1.3709903">
+              <caret line="42" column="4" selection-start-line="42" selection-start-column="4" selection-end-line="42" selection-end-column="4" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ImageAdapter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/RaenarApps/Game15/ImageAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="88" column="49" selection-start-line="88" selection-start-column="49" selection-end-line="88" selection-end-column="49" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TaskAddImage.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/RaenarApps/Game15/TaskAddImage.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="77" column="39" selection-start-line="77" selection-start-column="39" selection-end-line="77" selection-end-column="39" />
               <folding />
             </state>
           </provider>
@@ -86,16 +104,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FifteenActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/RaenarApps/Game15/FifteenActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="53" column="57" selection-start-line="53" selection-start-column="57" selection-end-line="53" selection-end-column="57" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="Git.Settings">
@@ -111,6 +119,7 @@
       <list>
         <option value="$PROJECT_DIR$/src/com/RaenarApps/Game15/Image.java" />
         <option value="$PROJECT_DIR$/src/com/RaenarApps/Game15/DBHelper.java" />
+        <option value="$PROJECT_DIR$/src/com/RaenarApps/Game15/TaskAddImage.java" />
         <option value="$PROJECT_DIR$/src/com/RaenarApps/Game15/ListActivity.java" />
       </list>
     </option>
@@ -391,7 +400,13 @@
       <option name="project" value="LOCAL" />
       <updated>1441392537291</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Added Save/Load to/from sqlLite">
+      <created>1441462805407</created>
+      <option name="number" value="00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1441462805407</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -413,6 +428,7 @@
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25358167" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Memory Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.49798658" sideWeight="0.48280802" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32885906" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -423,7 +439,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -439,7 +454,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Prepared DBHelper" />
-    <option name="LAST_COMMIT_MESSAGE" value="Prepared DBHelper" />
+    <MESSAGE value="Added Save/Load to/from sqlLite" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Save/Load to/from sqlLite" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -484,20 +500,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/RaenarApps/Game15/ImageAdapter.java">
+    <entry file="file://$PROJECT_DIR$/src/com/RaenarApps/Game15/FifteenActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.39314845">
-          <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-          <folding>
-            <element signature="e#952#953#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.80613667">
+          <caret line="53" column="57" selection-start-line="53" selection-start-column="57" selection-end-line="53" selection-end-column="57" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/RaenarApps/Game15/FifteenActivity.java">
+    <entry file="file://$PROJECT_DIR$/src/com/RaenarApps/Game15/Image.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="53" column="57" selection-start-line="53" selection-start-column="57" selection-end-line="53" selection-end-column="57" />
+          <caret line="25" column="5" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/RaenarApps/Game15/TaskAddImage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="77" column="39" selection-start-line="77" selection-start-column="39" selection-end-line="77" selection-end-column="39" />
           <folding />
         </state>
       </provider>
@@ -514,18 +536,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/RaenarApps/Game15/Image.java">
+    <entry file="file://$PROJECT_DIR$/src/com/RaenarApps/Game15/ImageAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="25" column="5" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
+          <caret line="88" column="49" selection-start-line="88" selection-start-column="49" selection-end-line="88" selection-end-column="49" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/RaenarApps/Game15/ListActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.54393303">
-          <caret line="109" column="47" selection-start-line="109" selection-start-column="47" selection-end-line="109" selection-end-column="47" />
+        <state vertical-scroll-proportion="-1.3709903">
+          <caret line="42" column="4" selection-start-line="42" selection-start-column="4" selection-end-line="42" selection-end-column="4" />
           <folding />
         </state>
       </provider>
