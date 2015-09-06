@@ -89,6 +89,7 @@ public class ListActivity extends Activity {
         String selection = Image.IMAGE_PATH + " LIKE ?";
         String[] selectionArgs = {imagePath};
         db.update(DBHelper.TABLE_NAME, cv, selection, selectionArgs);
+        db.close();
     }
 
     public void deleteImage(String imagePath) {
@@ -97,6 +98,7 @@ public class ListActivity extends Activity {
         String selection = Image.IMAGE_PATH + " LIKE ?";
         String[] selectionArgs = {imagePath};
         db.delete(DBHelper.TABLE_NAME, selection, selectionArgs);
+        db.close();
     }
 
     private void createImageList() {
