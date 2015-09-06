@@ -62,7 +62,7 @@ public class ImageAdapter extends BaseAdapter {
             thumbnail.setImageBitmap(scaledImage);
 //            saveThumbnail(scaledImage, image.getTitle());
         } else {
-            Toast.makeText(context, "NO THUMBNAIL CREATED", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(context, "NO THUMBNAIL CREATED", Toast.LENGTH_SHORT).show();
         }
 
         String s = image.getTitle();

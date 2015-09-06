@@ -28,19 +28,21 @@ public class TaskLoadImage extends AsyncTask<Void, Void, Void> {
     private Activity activity;
     private String imagePath;
     private boolean isDefault;
+    private boolean isProcessed;
     private ArrayList<Bitmap> chunkedImages;
     private String backgroundColor;
     Bitmap cheatImage;
-    String fileName;
     private AlertDialog dialog;
 
     int rowCount = 4;
     int columnCount = 4;
 
-    public TaskLoadImage(Activity activity, String imagePath, boolean isDefault, ArrayList<Bitmap> chunkedImages, String backgroundColor) {
+    public TaskLoadImage(Activity activity, String imagePath, boolean isDefault, boolean isProcessed,
+                         ArrayList<Bitmap> chunkedImages, String backgroundColor) {
         this.activity = activity;
         this.imagePath = imagePath;
         this.isDefault = isDefault;
+        this.isProcessed = isProcessed;
         this.chunkedImages = chunkedImages;
         this.backgroundColor = backgroundColor;
     }
@@ -53,13 +55,12 @@ public class TaskLoadImage extends AsyncTask<Void, Void, Void> {
         builder.setView(inflater.inflate(R.layout.loading_dialog, null));
         dialog = builder.create();
         dialog.show();
-
     }
 
     @Override
     protected Void doInBackground(Void... voids) {
-        chunkedImages = getChunksFromImage(imagePath, isDefault);
-        String dominantColor = ImageHelper.getDominantColor(activity, imagePath, isDefault);
+        chunkedImages = getChunksFromImage(imagePath, isDefault, isProcessed);
+        String dominantColor = ImageHelper.getDominantColor(activity, imagePath, !isProcessed);
         if (dominantColor != null) {
             backgroundColor = dominantColor;
         } else {
@@ -75,11 +76,10 @@ public class TaskLoadImage extends AsyncTask<Void, Void, Void> {
         ((FifteenActivity) activity).backgroundColor = backgroundColor;
         ((FifteenActivity) activity).updateUI();
         ((ImageView) activity.findViewById(R.id.ivCheatImage)).setImageBitmap(cheatImage);
-        Toast.makeText(activity,fileName, Toast.LENGTH_SHORT).show();
         dialog.dismiss();
     }
 
-    private ArrayList<Bitmap> getChunksFromImage(String imagePath, boolean isDefault) {
+    private ArrayList<Bitmap> getChunksFromImage(String imagePath, boolean isDefault, boolean isProcessed) {
 
 
         Display display = activity.getWindowManager().getDefaultDisplay();
@@ -96,24 +96,24 @@ public class TaskLoadImage extends AsyncTask<Void, Void, Void> {
         }
         Bitmap scaledBitmap;
 
-        if (isDefault) {
-            fileName = new Date().getTime() + "";
+        if (!isProcessed) {
             scaledBitmap = ImageHelper.getScaledBitmap(activity, imagePath, isDefault, reqWidth, reqHeight);
+            String fileName = new Date().getTime() + ".jpg";
             String newPath = saveBitmap(scaledBitmap,fileName, false);
 
             DBHelper dbHelper = new DBHelper(activity);
             SQLiteDatabase db = dbHelper.getWritableDatabase();
             ContentValues cv = new ContentValues();
             cv.put(Image.IMAGE_PATH, newPath);
-            cv.put(Image.IS_PROCESSED, true);
+            cv.put(Image.IS_PROCESSED, 1);
             String selection = Image.IMAGE_PATH + " LIKE ?";
             String[] selectionArgs = {imagePath};
             db.update(DBHelper.TABLE_NAME, cv, selection, selectionArgs);
             db.close();
-            ((FifteenActivity) activity).isDefaultGlobal = false;
+            ((FifteenActivity) activity).isProcessedGlobal = true;
 
         } else {
-            scaledBitmap = ImageHelper.loadBitmap(activity, imagePath, isDefault);
+            scaledBitmap = ImageHelper.loadBitmap(activity, imagePath, false);
         }
 
         cheatImage = scaledBitmap;
@@ -144,6 +144,9 @@ public class TaskLoadImage extends AsyncTask<Void, Void, Void> {
         } else {
             try {
                 FileOutputStream fileOutputStream = new FileOutputStream(pictureFile);
+                if (scaledImage == null) {
+                    Log.d(TAG, "Scaled image = null");
+                }
                 scaledImage.compress(Bitmap.CompressFormat.PNG, 100, fileOutputStream);
                 fileOutputStream.close();
             } catch (FileNotFoundException e) {

@@ -10,6 +10,7 @@ public class Image implements Serializable{
     private String imagePath;
     private String thumbnailPath;
     private boolean isDefault;
+    private boolean isProcessed;
 
     public static final String TITLE = "title";
     public static final String IMAGE_PATH = "ImagePath";
@@ -18,11 +19,12 @@ public class Image implements Serializable{
     public static final String IS_PROCESSED = "isProcessed";
 
 
-    public Image(String title, String imagePath, String thumbnailPath, boolean isDefault) {
+    public Image(String title, String imagePath, String thumbnailPath, boolean isDefault, boolean isProcessed) {
         this.title = title;
         this.imagePath = imagePath;
         this.thumbnailPath = thumbnailPath;
         this.isDefault = isDefault;
+        this.isProcessed = isProcessed;
     }
 
     public String getThumbnailPath() {
@@ -56,4 +58,13 @@ public class Image implements Serializable{
     public void setImagePath(String imagePath) {
         this.imagePath = imagePath;
     }
+
+    public boolean isProcessed() {
+        return isProcessed;
+    }
+
+    public void setIsProcessed(boolean isProcessed) {
+        this.isProcessed = isProcessed;
+    }
 }
+

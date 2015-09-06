@@ -43,6 +43,7 @@ public class TaskAddImage extends AsyncTask<Uri, Void, Void> {
         dialog = builder.create();
         dialog.show();
 
+
     }
 
     @Override
@@ -66,7 +67,7 @@ public class TaskAddImage extends AsyncTask<Uri, Void, Void> {
         String thumbnailPath = saveBitmap(thumbnail, imgTitle, true);
         Bitmap background = getScaledBackground(imgPath, false);
         String backgroundPath = saveBitmap(background, imgTitle, false);
-        imageList_TASK.add(new Image(imgTitle, backgroundPath, thumbnailPath, false));
+        imageList_TASK.add(new Image(imgTitle, backgroundPath, thumbnailPath, false, true));
 
         DBHelper dbHelper = new DBHelper(activity);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -75,6 +76,7 @@ public class TaskAddImage extends AsyncTask<Uri, Void, Void> {
         cv.put(Image.IMAGE_PATH, backgroundPath);
         cv.put(Image.THUMBNAIL_PATH, thumbnailPath);
         cv.put(Image.IS_DEFAULT, 0);
+        cv.put(Image.IS_PROCESSED, 1);
         db.insert(DBHelper.TABLE_NAME, null, cv);
 
     cursor.close();
@@ -85,6 +87,7 @@ public class TaskAddImage extends AsyncTask<Uri, Void, Void> {
     protected void onPostExecute(Void aVoid) {
         //        ((ListActivity) activity).fillImageList();
         ListView lvImages = (ListView) activity.findViewById(R.id.lvImages);
+        lvImages.deferNotifyDataSetChanged();
         lvImages.setSelection(lvImages.getCount() - 1);
         dialog.dismiss();
         super.onPostExecute(aVoid);

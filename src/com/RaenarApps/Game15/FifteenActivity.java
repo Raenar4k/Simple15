@@ -16,6 +16,7 @@ import android.view.*;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -82,6 +83,7 @@ public class FifteenActivity extends Activity {
             }
             imagePathGlobal = intent.getStringExtra(Image.IMAGE_PATH);
             isDefaultGlobal = intent.getBooleanExtra(Image.IS_DEFAULT, false);
+            isProcessedGlobal = intent.getBooleanExtra(Image.IS_PROCESSED, false);
         } else {
             String arrayString = sharedPreferences.getString(FifteenActivity.ARRAY, "");
             StringTokenizer st = new StringTokenizer(arrayString, ",");
@@ -94,8 +96,9 @@ public class FifteenActivity extends Activity {
             emptySpace.setY(sharedPreferences.getInt(EMPTY_SPACE_Y, 20));
             imagePathGlobal = sharedPreferences.getString(Image.IMAGE_PATH, "backgrounds/pollen.jpg");
             isDefaultGlobal = sharedPreferences.getBoolean(Image.IS_DEFAULT, true);
+            isProcessedGlobal = sharedPreferences.getBoolean(Image.IS_PROCESSED, true);
         }
-        TaskLoadImage taskLoadImage = new TaskLoadImage(this, imagePathGlobal, isDefaultGlobal,
+        TaskLoadImage taskLoadImage = new TaskLoadImage(this, imagePathGlobal, isDefaultGlobal, isProcessedGlobal,
                 chunkedImages, backgroundColor);
         taskLoadImage.execute();
         setListenersOnButtons();
@@ -431,7 +434,8 @@ public class FifteenActivity extends Activity {
                 if ((resultCode == RESULT_OK) && (data.hasExtra(Image.IMAGE_PATH))) {
                     imagePathGlobal = data.getStringExtra(Image.IMAGE_PATH);
                     isDefaultGlobal = data.getBooleanExtra(Image.IS_DEFAULT, false);
-                    TaskLoadImage taskLoadImage = new TaskLoadImage(this, imagePathGlobal, isDefaultGlobal,
+                    isProcessedGlobal = data.getBooleanExtra(Image.IS_PROCESSED, false);
+                    TaskLoadImage taskLoadImage = new TaskLoadImage(this, imagePathGlobal, isDefaultGlobal,isProcessedGlobal,
                             chunkedImages, backgroundColor);
                     taskLoadImage.execute();
                 }
@@ -455,6 +459,7 @@ public class FifteenActivity extends Activity {
         editor.putInt(EMPTY_SPACE_Y, emptySpace.getY());
         editor.putString(Image.IMAGE_PATH, imagePathGlobal);
         editor.putBoolean(Image.IS_DEFAULT, isDefaultGlobal);
+        editor.putBoolean(Image.IS_PROCESSED, isProcessedGlobal);
         editor.putBoolean(IS_NEW_GAME, false);
         editor.apply();
     }

@@ -50,9 +50,9 @@ public class ListActivity extends Activity {
             cv.put(Image.IMAGE_PATH, imageList.get(i).getImagePath());
             cv.put(Image.THUMBNAIL_PATH, imageList.get(i).getThumbnailPath());
             cv.put(Image.IS_DEFAULT, (imageList.get(i).isDefault() ? 1 : 0));
+            cv.put(Image.IS_PROCESSED, (imageList.get(i).isProcessed() ? 1 : 0));
             db.insert(DBHelper.TABLE_NAME, null, cv);
         }
-        Toast.makeText(this, "Saved to SQL", Toast.LENGTH_SHORT).show();
         db.close();
     }
 
@@ -65,18 +65,19 @@ public class ListActivity extends Activity {
             int imageIndex = cursor.getColumnIndex(Image.IMAGE_PATH);
             int thumbnailIndex = cursor.getColumnIndex(Image.THUMBNAIL_PATH);
             int isDefaultIndex = cursor.getColumnIndex(Image.IS_DEFAULT);
+            int isProcessedIndex = cursor.getColumnIndex(Image.IS_PROCESSED);
             imageList = new ArrayList<Image>();
             do {
                 String title = cursor.getString(titleIndex);
                 String image = cursor.getString(imageIndex);
                 String thumbnail = cursor.getString(thumbnailIndex);
                 boolean isDefault = cursor.getInt(isDefaultIndex) != 0;
-                imageList.add(new Image(title, image, thumbnail, isDefault));
+                boolean isProcessed = cursor.getInt(isProcessedIndex) != 0;
+                imageList.add(new Image(title, image, thumbnail, isDefault, isProcessed));
             } while (cursor.moveToNext());
         } else {
             Toast.makeText(this, "empty table", Toast.LENGTH_SHORT).show();
         }
-        Toast.makeText(this, "Loaded from SQL", Toast.LENGTH_SHORT).show();
         cursor.close();
         db.close();
     }
@@ -104,22 +105,22 @@ public class ListActivity extends Activity {
     private void createImageList() {
         imageList = new ArrayList<Image>();
 
-        imageList.add(new Image("Mountains", "backgrounds/mountains.jpg", "thumbnails/thumbnail_Mountains.jpg", true));
-        imageList.add(new Image("Funny Cat", "backgrounds/funny_cat.jpg", "thumbnails/thumbnail_Funny_Cat.jpg", true));
-        imageList.add(new Image("Pollen", "backgrounds/pollen.jpg", "thumbnails/thumbnail_Pollen.jpg", true));
-        imageList.add(new Image("Colors", "backgrounds/colors.jpg", "thumbnails/thumbnail_Colors.jpg", true));
+        imageList.add(new Image("Mountains", "backgrounds/mountains.jpg", "thumbnails/thumbnail_Mountains.jpg", true, false));
+        imageList.add(new Image("Funny Cat", "backgrounds/funny_cat.jpg", "thumbnails/thumbnail_Funny_Cat.jpg", true, false));
+        imageList.add(new Image("Pollen", "backgrounds/pollen.jpg", "thumbnails/thumbnail_Pollen.jpg", true, false));
+        imageList.add(new Image("Colors", "backgrounds/colors.jpg", "thumbnails/thumbnail_Colors.jpg", true, false));
 
-        imageList.add(new Image("Blueberries", "backgrounds/blueberries.jpeg", "thumbnails/thumbnail_Blueberries.jpg", true));
-        imageList.add(new Image("Castle", "backgrounds/castle.jpg", "thumbnails/thumbnail_Castle.jpg", true));
-        imageList.add(new Image("Cherries", "backgrounds/cherries.jpeg", "thumbnails/thumbnail_Cherries.jpg", true));
-        imageList.add(new Image("Fruit", "backgrounds/fruit.jpeg", "thumbnails/thumbnail_Fruit.jpg", true));
-        imageList.add(new Image("Islands", "backgrounds/islands.jpeg", "thumbnails/thumbnail_Islands.jpg", true));
-        imageList.add(new Image("Maldives", "backgrounds/maldives.jpeg", "thumbnails/thumbnail_Maldives.jpg", true));
-        imageList.add(new Image("Milky Way", "backgrounds/milkyway.jpeg", "thumbnails/thumbnail_Milky_Way.jpg", true));
-        imageList.add(new Image("Mountain Ridge", "backgrounds/mountains2.jpg", "thumbnails/thumbnail_Mountain_Ridge.jpg", true));
-        imageList.add(new Image("Raspberry", "backgrounds/raspberry.jpeg", "thumbnails/thumbnail_Raspberry.jpg", true));
-        imageList.add(new Image("Space", "backgrounds/space.jpg", "thumbnails/thumbnail_Space.jpg", true));
-        imageList.add(new Image("Zen", "backgrounds/zen.jpg", "thumbnails/thumbnail_Zen.jpg", true));
+        imageList.add(new Image("Blueberries", "backgrounds/blueberries.jpeg", "thumbnails/thumbnail_Blueberries.jpg", true, false));
+        imageList.add(new Image("Castle", "backgrounds/castle.jpg", "thumbnails/thumbnail_Castle.jpg", true, false));
+        imageList.add(new Image("Cherries", "backgrounds/cherries.jpeg", "thumbnails/thumbnail_Cherries.jpg", true, false));
+        imageList.add(new Image("Fruit", "backgrounds/fruit.jpeg", "thumbnails/thumbnail_Fruit.jpg", true, false));
+        imageList.add(new Image("Islands", "backgrounds/islands.jpeg", "thumbnails/thumbnail_Islands.jpg", true, false));
+        imageList.add(new Image("Maldives", "backgrounds/maldives.jpeg", "thumbnails/thumbnail_Maldives.jpg", true, false));
+        imageList.add(new Image("Milky Way", "backgrounds/milkyway.jpeg", "thumbnails/thumbnail_Milky_Way.jpg", true, false));
+        imageList.add(new Image("Mountain Ridge", "backgrounds/mountains2.jpg", "thumbnails/thumbnail_Mountain_Ridge.jpg", true, false));
+        imageList.add(new Image("Raspberry", "backgrounds/raspberry.jpeg", "thumbnails/thumbnail_Raspberry.jpg", true, false));
+        imageList.add(new Image("Space", "backgrounds/space.jpg", "thumbnails/thumbnail_Space.jpg", true, false));
+        imageList.add(new Image("Zen", "backgrounds/zen.jpg", "thumbnails/thumbnail_Zen.jpg", true, false));
 
         saveList();
     }
@@ -135,11 +136,11 @@ public class ListActivity extends Activity {
                 Intent intent = new Intent();
                 intent.putExtra(Image.IMAGE_PATH, imageList.get(i).getImagePath());
                 intent.putExtra(Image.IS_DEFAULT, imageList.get(i).isDefault());
+                intent.putExtra(Image.IS_PROCESSED, imageList.get(i).isProcessed());
                 setResult(RESULT_OK, intent);
                 finish();
             }
         });
-        Toast.makeText(this, "" + imageList.size(), Toast.LENGTH_SHORT).show();
     }
 
     @Override
