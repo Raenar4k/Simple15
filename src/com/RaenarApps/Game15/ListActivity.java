@@ -41,36 +41,6 @@ public class ListActivity extends Activity {
         }
     }
 
-    public void saveData() {
-        File dataDir = new File(Environment.getExternalStorageDirectory()
-                + "/Android/data/"
-                + getApplicationContext().getPackageName());
-        if (!dataDir.exists()) {
-            dataDir.mkdirs();
-        }
-        File dataFile = new File(dataDir.getPath() + File.separator
-                + DATA_FILE);
-
-        FileOutputStream fos = null;
-        try {
-            fos = new FileOutputStream(dataFile);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        ObjectOutputStream oos;
-        if (fos == null) {
-            Toast.makeText(this, "FOS = NULL", Toast.LENGTH_LONG).show();
-        } else {
-            try {
-                oos = new ObjectOutputStream(fos);
-                oos.writeObject(imageList);
-                oos.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
     public void saveList() {
         DBHelper dbHelper = new DBHelper(this);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -149,7 +119,6 @@ public class ListActivity extends Activity {
         imageList.add(new Image("Space", "backgrounds/space.jpg", "thumbnails/thumbnail_Space.jpg", true));
         imageList.add(new Image("Zen", "backgrounds/zen.jpg", "thumbnails/thumbnail_Zen.jpg", true));
 
-//        saveData();
         saveList();
     }
 
@@ -194,10 +163,7 @@ public class ListActivity extends Activity {
                 try {
                     if (resultCode == RESULT_OK && null != data) {
                         Uri selectedImageUri = data.getData();
-                        //todo: learn how AsyncTask synchronizes imageList
-//                        ArrayList<Image> imageList2 = new ArrayList<>();
-//                        imageList2.add(new Image("Mountains", "backgrounds/mountains.jpg", "thumbnails/thumbnail_Mountains.jpg", true));
-                        // If we pass imageList2 as a param, adapter wont be synchronized
+
                         TaskAddImage taskAddImage = new TaskAddImage(imageList, ListActivity.this);
                         taskAddImage.execute(selectedImageUri);
 
