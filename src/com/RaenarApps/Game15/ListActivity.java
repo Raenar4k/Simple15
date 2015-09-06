@@ -111,6 +111,24 @@ public class ListActivity extends Activity {
         db.close();
     }
 
+    public void updateTitle(String imagePath, String newTitle) {
+        DBHelper dbHelper = new DBHelper(this);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(Image.TITLE, newTitle);
+        String selection = Image.IMAGE_PATH + " LIKE ?";
+        String[] selectionArgs = {imagePath};
+        db.update(DBHelper.TABLE_NAME, cv, selection, selectionArgs);
+    }
+
+    public void deleteImage(String imagePath) {
+        DBHelper dbHelper = new DBHelper(this);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        String selection = Image.IMAGE_PATH + " LIKE ?";
+        String[] selectionArgs = {imagePath};
+        db.delete(DBHelper.TABLE_NAME, selection, selectionArgs);
+    }
+
     private void createImageList() {
         imageList = new ArrayList<Image>();
 

@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Environment;
@@ -85,8 +86,9 @@ public class ImageAdapter extends BaseAdapter {
                 okButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        String imagePath = ((ListActivity) context).imageList.get(i).getImagePath();
                         ((ListActivity) context).imageList.get(i).setTitle(editText.getText().toString());
-                        ((ListActivity) context).saveData();
+                        ((ListActivity) context).updateTitle(imagePath, editText.getText().toString());
                         notifyDataSetChanged();
                         dialog.hide();
                     }
@@ -110,8 +112,9 @@ public class ImageAdapter extends BaseAdapter {
                         .setPositiveButton(context.getString(R.string.dialog_yes), new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int q) {
+                                String imagePath = ((ListActivity) context).imageList.get(i).getImagePath();
                                 ((ListActivity) context).imageList.remove(i);
-                                ((ListActivity) context).saveData();
+                                ((ListActivity) context).deleteImage(imagePath);
                                 notifyDataSetChanged();
                             }
                         })
