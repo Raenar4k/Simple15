@@ -48,6 +48,7 @@ public class FifteenActivity extends Activity {
 
     String imagePathGlobal;
     boolean isDefaultGlobal;
+    boolean isProcessedGlobal;
 
     public String backgroundColor = "#f1122e06"; // Can be changed to dominant color of the image
     boolean simpleMode = false; // True - simple tiles, false - chuncks of image
