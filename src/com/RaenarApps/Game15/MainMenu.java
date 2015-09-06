@@ -55,18 +55,23 @@ public class MainMenu extends Activity {
         super.onActivityResult(requestCode, resultCode, data);
         switch (requestCode) {
             case FifteenActivity.RC_List:
-                String imagePathGlobal;
-                boolean isDefaultGlobal;
+                String imagePath;
+                boolean isDefault;
+                boolean isProcessed;
                 Intent intent = new Intent(this, FifteenActivity.class);
                 if ((resultCode == RESULT_OK) && (data.hasExtra(Image.IMAGE_PATH))) {
-                    imagePathGlobal = data.getStringExtra(Image.IMAGE_PATH);
-                    isDefaultGlobal = data.getBooleanExtra(Image.IS_DEFAULT, false);
+                    imagePath = data.getStringExtra(Image.IMAGE_PATH);
+                    isDefault = data.getBooleanExtra(Image.IS_DEFAULT, false);
+                    isProcessed = data.getBooleanExtra(Image.IS_PROCESSED, false);
                 } else {
-                    imagePathGlobal = "backgrounds/pollen.jpg";
-                    isDefaultGlobal = true;
+                    imagePath = "backgrounds/pollen.jpg";
+                    isDefault = true;
+                    isProcessed = false;
+
                 }
-                intent.putExtra(Image.IMAGE_PATH, imagePathGlobal);
-                intent.putExtra(Image.IS_DEFAULT, isDefaultGlobal);
+                intent.putExtra(Image.IMAGE_PATH, imagePath);
+                intent.putExtra(Image.IS_DEFAULT, isDefault);
+                intent.putExtra(Image.IS_PROCESSED, isProcessed);
                 intent.putExtra(FifteenActivity.IS_NEW_GAME, true);
                 setResult(RESULT_OK, intent);
                 startActivityForResult(intent, REQUEST_UPDATE);
