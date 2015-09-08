@@ -11,12 +11,14 @@ public class Image implements Serializable{
     private String thumbnailPath;
     private boolean isDefault;
     private boolean isProcessed;
+    private String dominantColor;
 
     public static final String TITLE = "title";
     public static final String IMAGE_PATH = "ImagePath";
     public static final String THUMBNAIL_PATH = "ThumbnailPath";
     public static final String IS_DEFAULT = "isDefault";
     public static final String IS_PROCESSED = "isProcessed";
+    public static final String DOMINANT_COLOR = "DominantColor";
 
 
     public Image(String title, String imagePath, String thumbnailPath, boolean isDefault, boolean isProcessed) {
@@ -25,6 +27,16 @@ public class Image implements Serializable{
         this.thumbnailPath = thumbnailPath;
         this.isDefault = isDefault;
         this.isProcessed = isProcessed;
+        this.dominantColor = null;
+    }
+
+    public Image(String title, String imagePath, String thumbnailPath, boolean isDefault, boolean isProcessed, String dominantColor) {
+        this.title = title;
+        this.imagePath = imagePath;
+        this.thumbnailPath = thumbnailPath;
+        this.isDefault = isDefault;
+        this.isProcessed = isProcessed;
+        this.dominantColor = dominantColor;
     }
 
     public String getThumbnailPath() {
@@ -65,6 +77,14 @@ public class Image implements Serializable{
 
     public void setIsProcessed(boolean isProcessed) {
         this.isProcessed = isProcessed;
+    }
+
+    public String getDominantColor() {
+        return dominantColor;
+    }
+
+    public void setDominantColor(String dominantColor) {
+        this.dominantColor = dominantColor;
     }
 }
 
