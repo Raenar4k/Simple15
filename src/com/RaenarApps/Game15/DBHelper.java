@@ -23,7 +23,8 @@ public class DBHelper extends SQLiteOpenHelper {
                 + "ID INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + Image.TITLE + " TEXT, "
                 + Image.IMAGE_PATH + " TEXT, " + Image.THUMBNAIL_PATH + " TEXT, "
-                + Image.IS_DEFAULT + " INTEGER, " + Image.IS_PROCESSED + " INTEGER);");
+                + Image.IS_DEFAULT + " INTEGER, " + Image.IS_PROCESSED + " INTEGER, "
+                + Image.DOMINANT_COLOR + " TEXT);");
     }
 
     @Override

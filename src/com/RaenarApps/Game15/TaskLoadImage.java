@@ -24,12 +24,13 @@ import java.util.Date;
  * Created by Raenar on 03.08.2015.
  */
 public class TaskLoadImage extends AsyncTask<Void, Void, Void> {
+    public static final String TAG = "TASK LOAD IMAGE";
     private Activity activity;
     private String imagePath;
     private boolean isDefault;
     private boolean isProcessed;
     private ArrayList<Bitmap> chunkedImages;
-    private String backgroundColor;
+    private String dominantColor;
     Bitmap cheatImage;
     private AlertDialog dialog;
     String newPath;
@@ -38,13 +39,13 @@ public class TaskLoadImage extends AsyncTask<Void, Void, Void> {
     int columnCount = 4;
 
     public TaskLoadImage(Activity activity, String imagePath, boolean isDefault, boolean isProcessed,
-                         ArrayList<Bitmap> chunkedImages, String backgroundColor) {
+                         ArrayList<Bitmap> chunkedImages, String dominantColor) {
         this.activity = activity;
         this.imagePath = imagePath;
         this.isDefault = isDefault;
         this.isProcessed = isProcessed;
         this.chunkedImages = chunkedImages;
-        this.backgroundColor = backgroundColor;
+        this.dominantColor = dominantColor;
     }
 
     @Override
@@ -62,7 +63,22 @@ public class TaskLoadImage extends AsyncTask<Void, Void, Void> {
         Bitmap processedBitmap = getProcessedBitmap(imagePath, isDefault, isProcessed);
         cheatImage = processedBitmap;
         chunkedImages = getChunksFromImage(processedBitmap);
-        backgroundColor = ImageHelper.getDominantColor(activity, imagePath, !isProcessed);
+
+        if (!isProcessed){
+            DBHelper dbHelper = new DBHelper(activity);
+            SQLiteDatabase db = dbHelper.getWritableDatabase();
+            ContentValues cv = new ContentValues();
+            ((FifteenActivity) activity).imagePathGlobal = newPath;
+            ((FifteenActivity) activity).isProcessedGlobal = true;
+            cv.put(Image.IMAGE_PATH, newPath);
+            cv.put(Image.IS_PROCESSED, 1);
+            dominantColor = ImageHelper.getDominantColor(activity, imagePath, !isProcessed);
+            cv.put(Image.DOMINANT_COLOR, dominantColor);
+            String selection = Image.IMAGE_PATH + " LIKE ?";
+            String[] selectionArgs = {imagePath};
+            db.update(DBHelper.TABLE_NAME, cv, selection, selectionArgs);
+            db.close();
+        }
 
         return null;
     }
@@ -70,8 +86,9 @@ public class TaskLoadImage extends AsyncTask<Void, Void, Void> {
     @Override
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
+
         ((FifteenActivity) activity).chunkedImages = chunkedImages;
-        ((FifteenActivity) activity).backgroundColor = backgroundColor;
+        ((FifteenActivity) activity).dominantColorGlobal = dominantColor;
         ((FifteenActivity) activity).updateUI();
         ((ImageView) activity.findViewById(R.id.ivCheatImage)).setImageBitmap(cheatImage);
         dialog.dismiss();
@@ -91,30 +108,18 @@ public class TaskLoadImage extends AsyncTask<Void, Void, Void> {
             reqHeight = reqWidth = displayHeight;
         }
         Bitmap scaledBitmap;
-        Log.d("LOAD IMAGE", "imagePath = " + imagePath);
+        Log.d(TAG, "imagePath = " + imagePath);
+        Log.d(TAG, "isProcessed  = " + isProcessed);
 
         if (!isProcessed) {
             scaledBitmap = ImageHelper.getScaledBitmap(activity, imagePath, isDefault, reqWidth, reqHeight);
             String fileName = new Date().getTime() + ".jpg";
             newPath = saveBitmap(scaledBitmap,fileName, false);
-
-            DBHelper dbHelper = new DBHelper(activity);
-            SQLiteDatabase db = dbHelper.getWritableDatabase();
-            ContentValues cv = new ContentValues();
-            cv.put(Image.IMAGE_PATH, newPath);
-            cv.put(Image.IS_PROCESSED, 1);
-            String selection = Image.IMAGE_PATH + " LIKE ?";
-            String[] selectionArgs = {imagePath};
-            db.update(DBHelper.TABLE_NAME, cv, selection, selectionArgs);
-            db.close();
-            ((FifteenActivity) activity).isProcessedGlobal = true;
-            ((FifteenActivity) activity).imagePathGlobal = newPath;
-
         } else {
             scaledBitmap = ImageHelper.loadBitmap(activity, imagePath, false);
         }
         if (scaledBitmap == null) {
-            Log.d("LOAD IMAGE", "scaledBitmap = null");
+            Log.d(TAG, "scaledBitmap = null");
         }
         return scaledBitmap;
     }

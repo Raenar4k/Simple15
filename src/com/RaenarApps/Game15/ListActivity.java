@@ -51,6 +51,7 @@ public class ListActivity extends Activity {
             cv.put(Image.THUMBNAIL_PATH, imageList.get(i).getThumbnailPath());
             cv.put(Image.IS_DEFAULT, (imageList.get(i).isDefault() ? 1 : 0));
             cv.put(Image.IS_PROCESSED, (imageList.get(i).isProcessed() ? 1 : 0));
+            cv.put(Image.DOMINANT_COLOR, imageList.get(i).getDominantColor());
             db.insert(DBHelper.TABLE_NAME, null, cv);
         }
         db.close();
@@ -66,6 +67,7 @@ public class ListActivity extends Activity {
             int thumbnailIndex = cursor.getColumnIndex(Image.THUMBNAIL_PATH);
             int isDefaultIndex = cursor.getColumnIndex(Image.IS_DEFAULT);
             int isProcessedIndex = cursor.getColumnIndex(Image.IS_PROCESSED);
+            int colorIndex = cursor.getColumnIndex(Image.DOMINANT_COLOR);
             imageList = new ArrayList<Image>();
             do {
                 String title = cursor.getString(titleIndex);
@@ -73,7 +75,8 @@ public class ListActivity extends Activity {
                 String thumbnail = cursor.getString(thumbnailIndex);
                 boolean isDefault = cursor.getInt(isDefaultIndex) != 0;
                 boolean isProcessed = cursor.getInt(isProcessedIndex) != 0;
-                imageList.add(new Image(title, image, thumbnail, isDefault, isProcessed));
+                String dominantColor = cursor.getString(colorIndex);
+                imageList.add(new Image(title, image, thumbnail, isDefault, isProcessed, dominantColor));
             } while (cursor.moveToNext());
         } else {
             Toast.makeText(this, "empty table", Toast.LENGTH_SHORT).show();
@@ -137,6 +140,7 @@ public class ListActivity extends Activity {
                 intent.putExtra(Image.IMAGE_PATH, imageList.get(i).getImagePath());
                 intent.putExtra(Image.IS_DEFAULT, imageList.get(i).isDefault());
                 intent.putExtra(Image.IS_PROCESSED, imageList.get(i).isProcessed());
+                intent.putExtra(Image.DOMINANT_COLOR, imageList.get(i).getDominantColor());
                 setResult(RESULT_OK, intent);
                 finish();
             }
