@@ -18,32 +18,16 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_LOG_LEVEL" value="DEBUG" />
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="INFO" />
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="app: com.RaenarApps.Game15" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b59e3b80-cc87-4f8a-8e03-ac100ff329b9" name="Default" comment="[WIP] Started work with isProcessed tag for Image">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Simple15/com/RaenarApps/Game15/BuildConfig.class" afterPath="$PROJECT_DIR$/out/production/Simple15/com/RaenarApps/Game15/BuildConfig.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Simple15/com/RaenarApps/Game15/FifteenActivity$1.class" afterPath="$PROJECT_DIR$/out/production/Simple15/com/RaenarApps/Game15/FifteenActivity$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Simple15/com/RaenarApps/Game15/FifteenActivity$2.class" afterPath="$PROJECT_DIR$/out/production/Simple15/com/RaenarApps/Game15/FifteenActivity$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Simple15/com/RaenarApps/Game15/FifteenActivity$3.class" afterPath="$PROJECT_DIR$/out/production/Simple15/com/RaenarApps/Game15/FifteenActivity$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Simple15/com/RaenarApps/Game15/FifteenActivity$4.class" afterPath="$PROJECT_DIR$/out/production/Simple15/com/RaenarApps/Game15/FifteenActivity$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Simple15/com/RaenarApps/Game15/FifteenActivity.class" afterPath="$PROJECT_DIR$/out/production/Simple15/com/RaenarApps/Game15/FifteenActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Simple15/com/RaenarApps/Game15/Image.class" afterPath="$PROJECT_DIR$/out/production/Simple15/com/RaenarApps/Game15/Image.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Simple15/com/RaenarApps/Game15/ImageAdapter.class" afterPath="$PROJECT_DIR$/out/production/Simple15/com/RaenarApps/Game15/ImageAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Simple15/com/RaenarApps/Game15/ListActivity$1.class" afterPath="$PROJECT_DIR$/out/production/Simple15/com/RaenarApps/Game15/ListActivity$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Simple15/com/RaenarApps/Game15/ListActivity.class" afterPath="$PROJECT_DIR$/out/production/Simple15/com/RaenarApps/Game15/ListActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Simple15/com/RaenarApps/Game15/MainMenu.class" afterPath="$PROJECT_DIR$/out/production/Simple15/com/RaenarApps/Game15/MainMenu.class" />
-      <change type="MODIFICATION" beforePath="C:\Users\Raenar\Desktop\Simple15\out\production\Simple15\Simple15.apk" afterPath="C:\Users\Raenar\Desktop\Simple15\out\production\Simple15\Simple15.apk" />
-      <change type="MODIFICATION" beforePath="C:\Users\Raenar\Desktop\Simple15\out\production\Simple15\Simple15.unaligned.apk" afterPath="C:\Users\Raenar\Desktop\Simple15\out\production\Simple15\Simple15.unaligned.apk" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Simple15/com/RaenarApps/Game15/TaskAddImage.class" afterPath="$PROJECT_DIR$/out/production/Simple15/com/RaenarApps/Game15/TaskAddImage.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Simple15/Simple15.apk" afterPath="$PROJECT_DIR$/out/production/Simple15/Simple15.apk" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Simple15/Simple15.unaligned.apk" afterPath="$PROJECT_DIR$/out/production/Simple15/Simple15.unaligned.apk" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Simple15/com/RaenarApps/Game15/TaskLoadImage.class" afterPath="$PROJECT_DIR$/out/production/Simple15/com/RaenarApps/Game15/TaskLoadImage.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/RaenarApps/Game15/FifteenActivity.java" afterPath="$PROJECT_DIR$/src/com/RaenarApps/Game15/FifteenActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/RaenarApps/Game15/Image.java" afterPath="$PROJECT_DIR$/src/com/RaenarApps/Game15/Image.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/RaenarApps/Game15/ImageAdapter.java" afterPath="$PROJECT_DIR$/src/com/RaenarApps/Game15/ImageAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/RaenarApps/Game15/ListActivity.java" afterPath="$PROJECT_DIR$/src/com/RaenarApps/Game15/ListActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/RaenarApps/Game15/MainMenu.java" afterPath="$PROJECT_DIR$/src/com/RaenarApps/Game15/MainMenu.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/RaenarApps/Game15/TaskAddImage.java" afterPath="$PROJECT_DIR$/src/com/RaenarApps/Game15/TaskAddImage.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/RaenarApps/Game15/TaskLoadImage.java" afterPath="$PROJECT_DIR$/src/com/RaenarApps/Game15/TaskLoadImage.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Simple15.iws" />
@@ -69,11 +53,9 @@
       <file leaf-file-name="TaskLoadImage.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/RaenarApps/Game15/TaskLoadImage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.34085777">
-              <caret line="69" column="5" selection-start-line="69" selection-start-column="5" selection-end-line="69" selection-end-column="5" />
-              <folding>
-                <element signature="e#4354#4362#0" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="-0.39888424">
+              <caret line="47" column="47" selection-start-line="47" selection-start-column="47" selection-end-line="47" selection-end-column="47" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -81,9 +63,31 @@
       <file leaf-file-name="ListActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/RaenarApps/Game15/ListActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.4482758">
+            <state vertical-scroll-proportion="0.0">
               <caret line="26" column="35" selection-start-line="26" selection-start-column="32" selection-end-line="26" selection-end-column="35" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MainMenu.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/RaenarApps/Game15/MainMenu.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="63" column="50" selection-start-line="63" selection-start-column="50" selection-end-line="63" selection-end-column="50" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FifteenActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/RaenarApps/Game15/FifteenActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="230" column="60" selection-start-line="230" selection-start-column="55" selection-end-line="230" selection-end-column="60" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -118,6 +122,16 @@
       </list>
     </option>
   </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Bundled (Maven 3)" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState />
+  </component>
   <component name="NamedScopeManager">
     <order />
   </component>
@@ -150,6 +164,8 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -188,8 +204,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -202,7 +216,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="192.168.56.101:5555" />
+    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="000eb20b381e21" />
     <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_AVD" value="Nexus_4_API_21" />
     <property name="last_opened_file_path" value="F:/Android_Dev/Classroom/key/android.jks" />
     <property name="ExportedModule" value="Simple15" />
@@ -428,29 +442,34 @@
       <option name="project" value="LOCAL" />
       <updated>1441556011483</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Finished with isProcessed: now default images load faster after 1st use (after being processed)">
+      <created>1441561949437</created>
+      <option name="number" value="00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1441561949437</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32885906" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32841823" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32885906" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295129" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32885906" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5181208" sideWeight="0.517192" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25358167" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25358167" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Memory Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.49798658" sideWeight="0.48280802" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32885906" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -461,6 +480,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32885906" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -481,7 +501,8 @@
     <MESSAGE value="Added updateTitle and deleteImage methods to work with DB" />
     <MESSAGE value="Clean up" />
     <MESSAGE value="[WIP] Started work with isProcessed tag for Image" />
-    <option name="LAST_COMMIT_MESSAGE" value="[WIP] Started work with isProcessed tag for Image" />
+    <MESSAGE value="Finished with isProcessed: now default images load faster after 1st use (after being processed)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished with isProcessed: now default images load faster after 1st use (after being processed)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -492,11 +513,35 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/com/RaenarApps/Game15/TaskLoadImage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/RaenarApps/Game15/ListActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="26" column="35" selection-start-line="26" selection-start-column="32" selection-end-line="26" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#6779#6780#0" expanded="false" />
+            <element signature="e#6809#6810#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/RaenarApps/Game15/ListActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="43" column="19" selection-start-line="43" selection-start-column="19" selection-end-line="43" selection-end-column="19" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#6779#6780#0" expanded="false" />
+            <element signature="e#6809#6810#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -538,7 +583,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="86" column="9" selection-start-line="86" selection-start-column="9" selection-end-line="86" selection-end-column="9" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#6779#6780#0" expanded="false" />
+            <element signature="e#6809#6810#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -546,7 +595,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -582,7 +633,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.8521739">
           <caret line="89" column="0" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -598,7 +648,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.35951662">
           <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -630,16 +679,38 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.36092716">
           <caret line="62" column="53" selection-start-line="62" selection-start-column="53" selection-end-line="62" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://F:/Android_Dev/sdk/platforms/android-19/android.jar!/android/os/Handler.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.0740743">
+          <caret line="101" column="0" selection-start-line="101" selection-start-column="0" selection-end-line="101" selection-end-column="0" />
           <folding>
-            <element signature="e#1803#1804#0" expanded="true" />
-            <element signature="e#1854#1855#0" expanded="true" />
+            <element signature="e#2756#2757#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/RaenarApps/Game15/ListActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="26" column="35" selection-start-line="26" selection-start-column="32" selection-end-line="26" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/RaenarApps/Game15/MainMenu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="63" column="50" selection-start-line="63" selection-start-column="50" selection-end-line="63" selection-end-column="50" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/RaenarApps/Game15/FifteenActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.4482758">
+        <state vertical-scroll-proportion="0.0">
           <caret line="230" column="60" selection-start-line="230" selection-start-column="55" selection-end-line="230" selection-end-column="60" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -647,29 +718,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/RaenarApps/Game15/MainMenu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.94864047">
-          <caret line="71" column="48" selection-start-line="71" selection-start-column="48" selection-end-line="71" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/RaenarApps/Game15/ListActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.4482758">
-          <caret line="26" column="35" selection-start-line="26" selection-start-column="32" selection-end-line="26" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/RaenarApps/Game15/TaskLoadImage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34085777">
-          <caret line="69" column="5" selection-start-line="69" selection-start-column="5" selection-end-line="69" selection-end-column="5" />
-          <folding>
-            <element signature="e#4354#4362#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="-0.39888424">
+          <caret line="47" column="47" selection-start-line="47" selection-start-column="47" selection-end-line="47" selection-end-column="47" />
+          <folding />
         </state>
       </provider>
     </entry>
