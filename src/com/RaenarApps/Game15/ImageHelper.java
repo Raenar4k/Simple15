@@ -18,12 +18,7 @@ public class ImageHelper {
         Bitmap sampledBitmap = getSampledBitmap(context, imagePath, isDefault, 200, 200);
         try {
             ImageColor imageColour = new ImageColor(sampledBitmap);
-            if (imageColour.returnColour(context) != null) {
-                String dominantColor = "#" + imageColour.returnColour(context);
-                return dominantColor;
-            } else {
-                return null;
-            }
+            return imageColour.returnColour(context);
         } catch (Exception e) {
             e.printStackTrace();
         }
