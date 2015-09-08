@@ -33,6 +33,7 @@ public class TaskLoadImage extends AsyncTask<Void, Void, Void> {
     private String backgroundColor;
     Bitmap cheatImage;
     private AlertDialog dialog;
+    String newPath;
 
     int rowCount = 4;
     int columnCount = 4;
@@ -95,11 +96,12 @@ public class TaskLoadImage extends AsyncTask<Void, Void, Void> {
             reqHeight = reqWidth = displayHeight;
         }
         Bitmap scaledBitmap;
+        Log.d("LOAD IMAGE", "imagePath = "+imagePath);
 
         if (!isProcessed) {
             scaledBitmap = ImageHelper.getScaledBitmap(activity, imagePath, isDefault, reqWidth, reqHeight);
             String fileName = new Date().getTime() + ".jpg";
-            String newPath = saveBitmap(scaledBitmap,fileName, false);
+            newPath = saveBitmap(scaledBitmap,fileName, false);
 
             DBHelper dbHelper = new DBHelper(activity);
             SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -111,11 +113,14 @@ public class TaskLoadImage extends AsyncTask<Void, Void, Void> {
             db.update(DBHelper.TABLE_NAME, cv, selection, selectionArgs);
             db.close();
             ((FifteenActivity) activity).isProcessedGlobal = true;
+            ((FifteenActivity) activity).imagePathGlobal = newPath;
 
         } else {
             scaledBitmap = ImageHelper.loadBitmap(activity, imagePath, false);
         }
-
+        if (scaledBitmap == null) {
+            Log.d("LOAD IMAGE", "scaledBitmap = null");
+        }
         cheatImage = scaledBitmap;
 
         ArrayList<Bitmap> chunkedImages = new ArrayList<Bitmap>(rowCount * columnCount);
