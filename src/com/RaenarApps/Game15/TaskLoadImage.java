@@ -12,7 +12,6 @@ import android.view.ContextThemeWrapper;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -60,13 +59,11 @@ public class TaskLoadImage extends AsyncTask<Void, Void, Void> {
 
     @Override
     protected Void doInBackground(Void... voids) {
-        chunkedImages = getChunksFromImage(imagePath, isDefault, isProcessed);
-        String dominantColor = ImageHelper.getDominantColor(activity, imagePath, !isProcessed);
-        if (dominantColor != null) {
-            backgroundColor = dominantColor;
-        } else {
-            backgroundColor = "#f1122e06";
-        }
+        Bitmap processedBitmap = getProcessedBitmap(imagePath, isDefault, isProcessed);
+        cheatImage = processedBitmap;
+        chunkedImages = getChunksFromImage(processedBitmap);
+        backgroundColor = ImageHelper.getDominantColor(activity, imagePath, !isProcessed);
+
         return null;
     }
 
@@ -80,9 +77,7 @@ public class TaskLoadImage extends AsyncTask<Void, Void, Void> {
         dialog.dismiss();
     }
 
-    private ArrayList<Bitmap> getChunksFromImage(String imagePath, boolean isDefault, boolean isProcessed) {
-
-
+    private Bitmap getProcessedBitmap(String imagePath, boolean isDefault, boolean isProcessed) {
         Display display = activity.getWindowManager().getDefaultDisplay();
         android.graphics.Point point = new android.graphics.Point();
         display.getSize(point);
@@ -96,7 +91,7 @@ public class TaskLoadImage extends AsyncTask<Void, Void, Void> {
             reqHeight = reqWidth = displayHeight;
         }
         Bitmap scaledBitmap;
-        Log.d("LOAD IMAGE", "imagePath = "+imagePath);
+        Log.d("LOAD IMAGE", "imagePath = " + imagePath);
 
         if (!isProcessed) {
             scaledBitmap = ImageHelper.getScaledBitmap(activity, imagePath, isDefault, reqWidth, reqHeight);
@@ -121,18 +116,21 @@ public class TaskLoadImage extends AsyncTask<Void, Void, Void> {
         if (scaledBitmap == null) {
             Log.d("LOAD IMAGE", "scaledBitmap = null");
         }
-        cheatImage = scaledBitmap;
+        return scaledBitmap;
+    }
+
+    private ArrayList<Bitmap> getChunksFromImage(Bitmap processedBitmap) {
 
         ArrayList<Bitmap> chunkedImages = new ArrayList<Bitmap>(rowCount * columnCount);
-        int chunkHeight = scaledBitmap.getHeight() / rowCount;
-        int chunkWidth = scaledBitmap.getWidth() / rowCount;
 
+        int chunkHeight = processedBitmap.getHeight() / rowCount;
+        int chunkWidth = processedBitmap.getWidth() / rowCount;
         //xCoord and yCoord are the pixel positions of the image chunks
         int yCoord = 0;
         for (int x = 0; x < rowCount; x++) {
             int xCoord = 0;
             for (int y = 0; y < rowCount; y++) {
-                chunkedImages.add(Bitmap.createBitmap(scaledBitmap, xCoord, yCoord, chunkWidth, chunkHeight));
+                chunkedImages.add(Bitmap.createBitmap(processedBitmap, xCoord, yCoord, chunkWidth, chunkHeight));
                 xCoord += chunkWidth;
             }
             yCoord += chunkHeight;

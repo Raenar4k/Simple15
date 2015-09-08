@@ -280,7 +280,7 @@ public class FifteenActivity extends Activity {
         }
         View someView = findViewById(R.id.llButtonsLine);
         View root = someView.getRootView();
-        if (adaptiveBackground) {
+        if (adaptiveBackground && backgroundColor != null) {
             root.setBackgroundColor(Color.parseColor(backgroundColor));
         } else {
             root.setBackgroundColor(Color.parseColor(backgroundColorDefault));
@@ -435,7 +435,7 @@ public class FifteenActivity extends Activity {
                     imagePathGlobal = data.getStringExtra(Image.IMAGE_PATH);
                     isDefaultGlobal = data.getBooleanExtra(Image.IS_DEFAULT, false);
                     isProcessedGlobal = data.getBooleanExtra(Image.IS_PROCESSED, false);
-                    TaskLoadImage taskLoadImage = new TaskLoadImage(this, imagePathGlobal, isDefaultGlobal,isProcessedGlobal,
+                    TaskLoadImage taskLoadImage = new TaskLoadImage(this, imagePathGlobal, isDefaultGlobal, isProcessedGlobal,
                             chunkedImages, backgroundColor);
                     taskLoadImage.execute();
                 }
