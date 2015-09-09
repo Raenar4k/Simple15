@@ -7,7 +7,7 @@
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Игра в 15 или &quot;пятнашки&quot; представляет собой головоломку на поле 4х4.  "
+            android:text="@string/slide1_top"
             android:textSize="20sp"
             android:id="@+id/textView" android:layout_gravity="center_horizontal"
             android:textColor="@android:color/black" android:layout_margin="10dp"/>
@@ -15,12 +15,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/imageView"
-            android:layout_below="@+id/textView" android:layout_alignParentEnd="false"
-            android:layout_alignParentRight="false"
-            android:src="@drawable/slide1" android:layout_above="@+id/textView2"
-            android:layout_alignParentStart="false" android:layout_centerInParent="true" android:layout_margin="10dp"/>
+            android:src="@drawable/slide1"
+            android:layout_below="@+id/textView"
+            android:layout_above="@+id/textView2"
+            android:layout_centerInParent="true" android:layout_margin="10dp"/>
     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-              android:text="Цель игры - используя пустую ячейку упорядочить перемешанные кусочки изображения."
+              android:text="@string/slide1_bot"
               android:textSize="20sp" android:id="@+id/textView2" android:layout_gravity="center_horizontal"
               android:textColor="@android:color/black"
               android:layout_alignParentBottom="true" android:layout_alignParentStart="true"
