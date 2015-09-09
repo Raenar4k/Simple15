@@ -18,6 +18,7 @@ import android.widget.ListView;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by Raenar on 02.08.2015.
@@ -63,11 +64,13 @@ public class TaskAddImage extends AsyncTask<Uri, Void, Void> {
         int nameIndex = cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME);
         String imgTitle = cursor.getString(nameIndex);
 
+        String fileName = new Date().getTime() + ".jpg";
         Bitmap thumbnail = ImageHelper.getScaledBitmap(activity, imgPath, false, 200, 200);
-        String thumbnailPath = saveBitmap(thumbnail, imgTitle, true);
+        String thumbnailPath = saveBitmap(thumbnail, fileName, true);
         Bitmap background = getScaledBackground(imgPath, false);
-        String backgroundPath = saveBitmap(background, imgTitle, false);
-        imageList_TASK.add(new Image(imgTitle, backgroundPath, thumbnailPath, false, true,null));
+        String backgroundPath = saveBitmap(background, fileName, false);
+        String dominantColor = ImageHelper.getDominantColor(activity, imgPath, false);
+        imageList_TASK.add(new Image(imgTitle, backgroundPath, thumbnailPath, false, true, dominantColor));
 
         DBHelper dbHelper = new DBHelper(activity);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -77,6 +80,7 @@ public class TaskAddImage extends AsyncTask<Uri, Void, Void> {
         cv.put(Image.THUMBNAIL_PATH, thumbnailPath);
         cv.put(Image.IS_DEFAULT, 0);
         cv.put(Image.IS_PROCESSED, 1);
+        cv.put(Image.DOMINANT_COLOR, dominantColor);
         db.insert(DBHelper.TABLE_NAME, null, cv);
 
     cursor.close();
