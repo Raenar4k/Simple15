@@ -67,7 +67,7 @@ public class TaskAddImage extends AsyncTask<Uri, Void, Void> {
         String thumbnailPath = saveBitmap(thumbnail, imgTitle, true);
         Bitmap background = getScaledBackground(imgPath, false);
         String backgroundPath = saveBitmap(background, imgTitle, false);
-        imageList_TASK.add(new Image(imgTitle, backgroundPath, thumbnailPath, false, true));
+        imageList_TASK.add(new Image(imgTitle, backgroundPath, thumbnailPath, false, true,null));
 
         DBHelper dbHelper = new DBHelper(activity);
         SQLiteDatabase db = dbHelper.getWritableDatabase();

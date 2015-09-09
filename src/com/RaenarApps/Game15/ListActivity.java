@@ -108,22 +108,22 @@ public class ListActivity extends Activity {
     private void createImageList() {
         imageList = new ArrayList<Image>();
 
-        imageList.add(new Image("Mountains", "backgrounds/mountains.jpg", "thumbnails/thumbnail_Mountains.jpg", true, false));
-        imageList.add(new Image("Funny Cat", "backgrounds/funny_cat.jpg", "thumbnails/thumbnail_Funny_Cat.jpg", true, false));
-        imageList.add(new Image("Pollen", "backgrounds/pollen.jpg", "thumbnails/thumbnail_Pollen.jpg", true, false));
-        imageList.add(new Image("Colors", "backgrounds/colors.jpg", "thumbnails/thumbnail_Colors.jpg", true, false));
+        imageList.add(new Image("Mountains", "backgrounds/mountains.jpg", "thumbnails/thumbnail_mountains.jpg"));
+        imageList.add(new Image("Funny Cat", "backgrounds/funny_cat.jpg", "thumbnails/thumbnail_funny_cat.jpg"));
+        imageList.add(new Image("Pollen", "backgrounds/pollen.jpg", "thumbnails/thumbnail_pollen.jpg"));
+        imageList.add(new Image("Colors", "backgrounds/colors.jpg", "thumbnails/thumbnail_colors.jpg"));
 
-        imageList.add(new Image("Blueberries", "backgrounds/blueberries.jpeg", "thumbnails/thumbnail_Blueberries.jpg", true, false));
-        imageList.add(new Image("Castle", "backgrounds/castle.jpg", "thumbnails/thumbnail_Castle.jpg", true, false));
-        imageList.add(new Image("Cherries", "backgrounds/cherries.jpeg", "thumbnails/thumbnail_Cherries.jpg", true, false));
-        imageList.add(new Image("Fruit", "backgrounds/fruit.jpeg", "thumbnails/thumbnail_Fruit.jpg", true, false));
-        imageList.add(new Image("Islands", "backgrounds/islands.jpeg", "thumbnails/thumbnail_Islands.jpg", true, false));
-        imageList.add(new Image("Maldives", "backgrounds/maldives.jpeg", "thumbnails/thumbnail_Maldives.jpg", true, false));
-        imageList.add(new Image("Milky Way", "backgrounds/milkyway.jpeg", "thumbnails/thumbnail_Milky_Way.jpg", true, false));
-        imageList.add(new Image("Mountain Ridge", "backgrounds/mountains2.jpg", "thumbnails/thumbnail_Mountain_Ridge.jpg", true, false));
-        imageList.add(new Image("Raspberry", "backgrounds/raspberry.jpeg", "thumbnails/thumbnail_Raspberry.jpg", true, false));
-        imageList.add(new Image("Space", "backgrounds/space.jpg", "thumbnails/thumbnail_Space.jpg", true, false));
-        imageList.add(new Image("Zen", "backgrounds/zen.jpg", "thumbnails/thumbnail_Zen.jpg", true, false));
+        imageList.add(new Image("Blueberries", "backgrounds/blueberries.jpeg", "thumbnails/thumbnail_blueberries.jpg"));
+        imageList.add(new Image("Castle", "backgrounds/castle.jpg", "thumbnails/thumbnail_castle.jpg"));
+        imageList.add(new Image("Cherries", "backgrounds/cherries.jpeg", "thumbnails/thumbnail_cherries.jpg"));
+        imageList.add(new Image("Fruit", "backgrounds/fruit.jpeg", "thumbnails/thumbnail_fruit.jpg"));
+        imageList.add(new Image("Islands", "backgrounds/islands.jpeg", "thumbnails/thumbnail_islands.jpg"));
+        imageList.add(new Image("Maldives", "backgrounds/maldives.jpeg", "thumbnails/thumbnail_maldives.jpg"));
+        imageList.add(new Image("Milky Way", "backgrounds/milkyway.jpeg", "thumbnails/thumbnail_milky_way.jpg"));
+        imageList.add(new Image("Mountain Ridge", "backgrounds/mountains2.jpg", "thumbnails/thumbnail_mountain_ridge.jpg"));
+        imageList.add(new Image("Raspberry", "backgrounds/raspberry.jpeg", "thumbnails/thumbnail_raspberry.jpg"));
+        imageList.add(new Image("Space", "backgrounds/space.jpg", "thumbnails/thumbnail_space.jpg"));
+        imageList.add(new Image("Zen", "backgrounds/zen.jpg", "thumbnails/thumbnail_zen.jpg"));
 
         saveList();
     }

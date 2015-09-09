@@ -21,12 +21,12 @@ public class Image implements Serializable{
     public static final String DOMINANT_COLOR = "DominantColor";
 
 
-    public Image(String title, String imagePath, String thumbnailPath, boolean isDefault, boolean isProcessed) {
+    public Image(String title, String imagePath, String thumbnailPath) {
         this.title = title;
         this.imagePath = imagePath;
         this.thumbnailPath = thumbnailPath;
-        this.isDefault = isDefault;
-        this.isProcessed = isProcessed;
+        this.isDefault = true;
+        this.isProcessed = false;
         this.dominantColor = null;
     }
 
