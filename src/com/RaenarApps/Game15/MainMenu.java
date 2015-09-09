@@ -65,19 +65,14 @@ public class MainMenu extends Activity {
                     isDefault = data.getBooleanExtra(Image.IS_DEFAULT, false);
                     isProcessed = data.getBooleanExtra(Image.IS_PROCESSED, false);
                     dominantColor = data.getStringExtra(Image.DOMINANT_COLOR);
-                } else {
-                    imagePath = "backgrounds/pollen.jpg";
-                    isDefault = true;
-                    isProcessed = false;
-                    dominantColor = null;
+                    intent.putExtra(Image.IMAGE_PATH, imagePath);
+                    intent.putExtra(Image.IS_DEFAULT, isDefault);
+                    intent.putExtra(Image.IS_PROCESSED, isProcessed);
+                    intent.putExtra(Image.DOMINANT_COLOR, dominantColor);
+                    intent.putExtra(FifteenActivity.IS_NEW_GAME, true);
+                    setResult(RESULT_OK, intent);
+                    startActivityForResult(intent, REQUEST_UPDATE);
                 }
-                intent.putExtra(Image.IMAGE_PATH, imagePath);
-                intent.putExtra(Image.IS_DEFAULT, isDefault);
-                intent.putExtra(Image.IS_PROCESSED, isProcessed);
-                intent.putExtra(Image.DOMINANT_COLOR, dominantColor);
-                intent.putExtra(FifteenActivity.IS_NEW_GAME, true);
-                setResult(RESULT_OK, intent);
-                startActivityForResult(intent, REQUEST_UPDATE);
                 break;
             case REQUEST_UPDATE:
                 updateMenu();
