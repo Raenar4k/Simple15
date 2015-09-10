@@ -46,4 +46,20 @@
     <string name="dialog_no">No</string>
     <string name="win_congratulations">Congratulations! You have completed the puzzle!</string>
 
+    <!--"Slides in How-to"-->
+    <string name="slide1_top">The 15-Puzzle game is a sliding puzzle on a board of 4x4 tiles</string>
+    <string name="slide1_bot">Goal of the game is to re-arrange tiles in order by using the empty space</string>
+    <string name="slide2_bot">You can also add your image from gallery by pressing \"+\" button</string>
+    <string name="slide3_top">Use hint to look at the correct order of the tiles</string>
+    <string name="slide3_bot">Different options will help you to customize your game</string>
+    <string name="slide4_bot">You can also change your image in any moment in the game without losing your progress!</string>
+    <string name="slide5_top">Simple mode</string>
+    <string name="slide5_bot">Classic \"15 puzzle\"</string>
+    <string name="slide6_top">Image mode</string>
+    <string name="slide6_bot">Try using different images to see what suits you</string>
+    <string name="slide7_top">Hybrid mode</string>
+    <string name="slide7_bot">Works well with brighter images</string>
+    <string name="slide2_top">To start the game chose one of the images to be used as a puzzle</string>
+    <string name="slide4_top">You can change between 3 modes</string>
+
 </resources>

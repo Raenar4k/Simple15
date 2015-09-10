@@ -7,7 +7,7 @@
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Используйте подсказку чтобы правильно собрать головоломку"
+            android:text="@string/slide3_top"
             android:textSize="20sp"
             android:id="@+id/textView" android:layout_gravity="center_horizontal"
             android:textColor="@android:color/black" android:layout_margin="10dp"/>
@@ -19,7 +19,7 @@
             android:src="@drawable/slide3" android:layout_above="@+id/textView2"
             android:layout_centerInParent="true"/>
     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-              android:text="Различные опции помогут настроить игру как вам удобно"
+              android:text="@string/slide3_bot"
               android:textSize="20sp" android:id="@+id/textView2" android:layout_gravity="center_horizontal"
               android:textColor="@android:color/black"
               android:layout_alignParentBottom="true" android:layout_alignParentStart="true"

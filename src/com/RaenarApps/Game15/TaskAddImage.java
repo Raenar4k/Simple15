@@ -2,7 +2,9 @@ package com.RaenarApps.Game15;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.ContentValues;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -16,6 +18,7 @@ import android.widget.ListView;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by Raenar on 02.08.2015.
@@ -41,6 +44,7 @@ public class TaskAddImage extends AsyncTask<Uri, Void, Void> {
         dialog = builder.create();
         dialog.show();
 
+
     }
 
     @Override
@@ -60,50 +64,38 @@ public class TaskAddImage extends AsyncTask<Uri, Void, Void> {
         int nameIndex = cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME);
         String imgTitle = cursor.getString(nameIndex);
 
+        String fileName = new Date().getTime() + ".jpg";
         Bitmap thumbnail = ImageHelper.getScaledBitmap(activity, imgPath, false, 200, 200);
-        String thumbnailPath = saveBitmap(thumbnail, imgTitle, true);
+        String thumbnailPath = saveBitmap(thumbnail, fileName, true);
         Bitmap background = getScaledBackground(imgPath, false);
-        String backgroundPath = saveBitmap(background, imgTitle, false);
-        imageList_TASK.add(new Image(imgTitle, backgroundPath, thumbnailPath, false));
+        String backgroundPath = saveBitmap(background, fileName, false);
+        String dominantColor = ImageHelper.getDominantColor(activity, imgPath, false);
+        imageList_TASK.add(new Image(imgTitle, backgroundPath, thumbnailPath, false, true, dominantColor));
 
-        File dataFile = new File(Environment.getExternalStorageDirectory()
-                + "/Android/data/"
-                + activity.getPackageName() + File.separator
-                + ListActivity.DATA_FILE);
-        saveData(dataFile);
-        cursor.close();
-        return null;
+        DBHelper dbHelper = new DBHelper(activity);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(Image.TITLE, imgTitle);
+        cv.put(Image.IMAGE_PATH, backgroundPath);
+        cv.put(Image.THUMBNAIL_PATH, thumbnailPath);
+        cv.put(Image.IS_DEFAULT, 0);
+        cv.put(Image.IS_PROCESSED, 1);
+        cv.put(Image.DOMINANT_COLOR, dominantColor);
+        db.insert(DBHelper.TABLE_NAME, null, cv);
+
+    cursor.close();
+    return null;
     }
 
     @Override
     protected void onPostExecute(Void aVoid) {
         //        ((ListActivity) activity).fillImageList();
         ListView lvImages = (ListView) activity.findViewById(R.id.lvImages);
+        lvImages.deferNotifyDataSetChanged();
         lvImages.setSelection(lvImages.getCount() - 1);
         dialog.dismiss();
         super.onPostExecute(aVoid);
     }
-
-    private void saveData(File dataFile) {
-        FileOutputStream fos = null;
-        try {
-            fos = new FileOutputStream(dataFile);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        ObjectOutputStream oos;
-        if (fos != null) {
-            try {
-                oos = new ObjectOutputStream(fos);
-                oos.writeObject(imageList_TASK);
-                oos.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-        }
-    }
-
 
     private Bitmap getScaledBackground(String imagePath, boolean isDefault) {
         Display display = activity.getWindowManager().getDefaultDisplay();
