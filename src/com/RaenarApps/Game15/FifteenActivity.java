@@ -12,6 +12,7 @@ import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.*;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -30,11 +31,11 @@ public class FifteenActivity extends Activity {
 
     public static final String PREFERENCES = "Simple15prefs";
 
+    public static final String TAG = "FIFTEEN ACTIVITY";
+    //Various keys
     public static final String ARRAY = "Array";
     public static final String EMPTY_SPACE_X = "Empty space x";
     public static final String EMPTY_SPACE_Y = "Empty space y";
-    public static final String IMAGE_PATH = "ImagePath";
-    public static final String IS_DEFAULT = "isDefault";
     public static final String IS_NEW_GAME = "IsNewGame";
 
     private Button[][] buttons = new Button[ROW_COUNT][COLUMN_COUNT];
@@ -49,8 +50,9 @@ public class FifteenActivity extends Activity {
 
     String imagePathGlobal;
     boolean isDefaultGlobal;
+    boolean isProcessedGlobal;
+    String dominantColorGlobal; // Can be changed to dominant color of the image
 
-    public String backgroundColor = "#f1122e06"; // Can be changed to dominant color of the image
     boolean simpleMode = false; // True - simple tiles, false - chuncks of image
     boolean showNumbers = false; // True - show numbers on tiles
     boolean adaptiveBackground = true; // True - the background will be of dominant color of the image, false - def. color
@@ -80,8 +82,11 @@ public class FifteenActivity extends Activity {
             while (!isGameWinnable()) {
                 generateRandomArray();
             }
-            imagePathGlobal = intent.getStringExtra(IMAGE_PATH);
-            isDefaultGlobal = intent.getBooleanExtra(IS_DEFAULT, false);
+            imagePathGlobal = intent.getStringExtra(Image.IMAGE_PATH);
+            Log.d(TAG, "NewGame -> imagePathGlobal = "+imagePathGlobal);
+            isDefaultGlobal = intent.getBooleanExtra(Image.IS_DEFAULT, false);
+            isProcessedGlobal = intent.getBooleanExtra(Image.IS_PROCESSED, false);
+            dominantColorGlobal = intent.getStringExtra(Image.DOMINANT_COLOR);
         } else {
             String arrayString = sharedPreferences.getString(FifteenActivity.ARRAY, "");
             StringTokenizer st = new StringTokenizer(arrayString, ",");
@@ -92,16 +97,19 @@ public class FifteenActivity extends Activity {
             }
             emptySpace.setX(sharedPreferences.getInt(EMPTY_SPACE_X, 20));
             emptySpace.setY(sharedPreferences.getInt(EMPTY_SPACE_Y, 20));
-            imagePathGlobal = sharedPreferences.getString(IMAGE_PATH, "backgrounds/pollen.jpg");
-            isDefaultGlobal = sharedPreferences.getBoolean(IS_DEFAULT, true);
+            imagePathGlobal = sharedPreferences.getString(Image.IMAGE_PATH, "backgrounds/pollen.jpg");
+            isDefaultGlobal = sharedPreferences.getBoolean(Image.IS_DEFAULT, true);
+            isProcessedGlobal = sharedPreferences.getBoolean(Image.IS_PROCESSED, false);
+            dominantColorGlobal = sharedPreferences.getString(Image.DOMINANT_COLOR, null);
         }
-        TaskLoadImage taskLoadImage = new TaskLoadImage(this, imagePathGlobal, isDefaultGlobal,
-                chunkedImages, backgroundColor);
+        TaskLoadImage taskLoadImage = new TaskLoadImage(this, imagePathGlobal, isDefaultGlobal, isProcessedGlobal,
+                chunkedImages, dominantColorGlobal);
         taskLoadImage.execute();
         setListenersOnButtons();
     }
 
     private boolean isGameWinnable() {
+        //https://en.wikipedia.org/wiki/15_puzzle#Solvability
         int inversionsNumber = 0;
         int emptySpaceRow = -1;
         int previousNumber = array[0][0];
@@ -128,6 +136,7 @@ public class FifteenActivity extends Activity {
                         Button clickedButton = (Button) view;
                         Point clickedPoint = getClickedPoint(clickedButton);
                         if (clickedPoint != null && canMove(clickedPoint)) {
+                            //Swaping tile with empty space
                             String clickedButtonText = clickedButton.getText().toString();
                             clickedButton.setVisibility(View.INVISIBLE);
                             clickedButton.setText("0");
@@ -145,7 +154,6 @@ public class FifteenActivity extends Activity {
                             emptySpace.setY(clickedPoint.getY());
 
                             if (isGameWon()) {
-//                                Toast.makeText(getApplicationContext(), "YOU WIN", Toast.LENGTH_SHORT).show();
                                 showWinDialog();
                             }
                         }
@@ -276,8 +284,8 @@ public class FifteenActivity extends Activity {
         }
         View someView = findViewById(R.id.llButtonsLine);
         View root = someView.getRootView();
-        if (adaptiveBackground) {
-            root.setBackgroundColor(Color.parseColor(backgroundColor));
+        if (adaptiveBackground && dominantColorGlobal != null) {
+            root.setBackgroundColor(Color.parseColor(dominantColorGlobal));
         } else {
             root.setBackgroundColor(Color.parseColor(backgroundColorDefault));
         }
@@ -427,11 +435,13 @@ public class FifteenActivity extends Activity {
         super.onActivityResult(requestCode, resultCode, data);
         switch (requestCode) {
             case RC_List:
-                if ((resultCode == RESULT_OK) && (data.hasExtra(IMAGE_PATH))) {
-                    imagePathGlobal = data.getStringExtra(IMAGE_PATH);
-                    isDefaultGlobal = data.getBooleanExtra(IS_DEFAULT, false);
-                    TaskLoadImage taskLoadImage = new TaskLoadImage(this, imagePathGlobal, isDefaultGlobal,
-                            chunkedImages, backgroundColor);
+                if ((resultCode == RESULT_OK) && (data.hasExtra(Image.IMAGE_PATH))) {
+                    imagePathGlobal = data.getStringExtra(Image.IMAGE_PATH);
+                    isDefaultGlobal = data.getBooleanExtra(Image.IS_DEFAULT, false);
+                    isProcessedGlobal = data.getBooleanExtra(Image.IS_PROCESSED, false);
+                    dominantColorGlobal = data.getStringExtra(Image.DOMINANT_COLOR);
+                    TaskLoadImage taskLoadImage = new TaskLoadImage(this, imagePathGlobal, isDefaultGlobal, isProcessedGlobal,
+                            chunkedImages, dominantColorGlobal);
                     taskLoadImage.execute();
                 }
                 break;
@@ -452,8 +462,10 @@ public class FifteenActivity extends Activity {
         editor.putString(ARRAY, str.toString());
         editor.putInt(EMPTY_SPACE_X, emptySpace.getX());
         editor.putInt(EMPTY_SPACE_Y, emptySpace.getY());
-        editor.putString(IMAGE_PATH, imagePathGlobal);
-        editor.putBoolean(IS_DEFAULT, isDefaultGlobal);
+        editor.putString(Image.IMAGE_PATH, imagePathGlobal);
+        editor.putBoolean(Image.IS_DEFAULT, isDefaultGlobal);
+        editor.putBoolean(Image.IS_PROCESSED, isProcessedGlobal);
+        editor.putString(Image.DOMINANT_COLOR, dominantColorGlobal);
         editor.putBoolean(IS_NEW_GAME, false);
         editor.apply();
     }

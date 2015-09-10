@@ -1,7 +1,10 @@
 package com.RaenarApps.Game15;
 
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -27,12 +30,10 @@ public class ListActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_gallery);
-        File dataFile = new File(Environment.getExternalStorageDirectory()
-                + "/Android/data/"
-                + getApplicationContext().getPackageName() + File.separator
-                + DATA_FILE);
-        if (dataFile.exists()) {
-            loadData(dataFile);
+
+        File database = getApplicationContext().getDatabasePath(DBHelper.DB_NAME);
+        if (database.exists()) {
+            loadList();
             fillImageList();
         } else {
             createImageList();
@@ -40,74 +41,91 @@ public class ListActivity extends Activity {
         }
     }
 
-    private void loadData(File file) {
-        FileInputStream fis = null;
-        try {
-            fis = new FileInputStream(file);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+    public void saveList() {
+        DBHelper dbHelper = new DBHelper(this);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        for (int i = 0; i < imageList.size(); i++) {
+            ContentValues cv = new ContentValues();
+            cv.put(Image.TITLE, imageList.get(i).getTitle());
+            cv.put(Image.IMAGE_PATH, imageList.get(i).getImagePath());
+            cv.put(Image.THUMBNAIL_PATH, imageList.get(i).getThumbnailPath());
+            cv.put(Image.IS_DEFAULT, (imageList.get(i).isDefault() ? 1 : 0));
+            cv.put(Image.IS_PROCESSED, (imageList.get(i).isProcessed() ? 1 : 0));
+            cv.put(Image.DOMINANT_COLOR, imageList.get(i).getDominantColor());
+            db.insert(DBHelper.TABLE_NAME, null, cv);
         }
-        ObjectInputStream ois;
-        try {
-            ois = new ObjectInputStream(fis);
-            imageList = (ArrayList<Image>) ois.readObject();
-            ois.close();
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+        db.close();
     }
 
-    public void saveData() {
-        File dataDir = new File(Environment.getExternalStorageDirectory()
-                + "/Android/data/"
-                + getApplicationContext().getPackageName());
-        if (!dataDir.exists()) {
-            dataDir.mkdirs();
-        }
-        File dataFile = new File(dataDir.getPath() + File.separator
-                + DATA_FILE);
-
-        FileOutputStream fos = null;
-        try {
-            fos = new FileOutputStream(dataFile);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        ObjectOutputStream oos;
-        if (fos == null) {
-            Toast.makeText(this, "FOS = NULL", Toast.LENGTH_LONG).show();
+    public void loadList() {
+        DBHelper dbHelper = new DBHelper(this);
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.query(DBHelper.TABLE_NAME, null, null, null, null, null, null);
+        if (cursor.moveToNext()) {
+            int titleIndex = cursor.getColumnIndex(Image.TITLE);
+            int imageIndex = cursor.getColumnIndex(Image.IMAGE_PATH);
+            int thumbnailIndex = cursor.getColumnIndex(Image.THUMBNAIL_PATH);
+            int isDefaultIndex = cursor.getColumnIndex(Image.IS_DEFAULT);
+            int isProcessedIndex = cursor.getColumnIndex(Image.IS_PROCESSED);
+            int colorIndex = cursor.getColumnIndex(Image.DOMINANT_COLOR);
+            imageList = new ArrayList<Image>();
+            do {
+                String title = cursor.getString(titleIndex);
+                String image = cursor.getString(imageIndex);
+                String thumbnail = cursor.getString(thumbnailIndex);
+                boolean isDefault = cursor.getInt(isDefaultIndex) != 0;
+                boolean isProcessed = cursor.getInt(isProcessedIndex) != 0;
+                String dominantColor = cursor.getString(colorIndex);
+                imageList.add(new Image(title, image, thumbnail, isDefault, isProcessed, dominantColor));
+            } while (cursor.moveToNext());
         } else {
-            try {
-                oos = new ObjectOutputStream(fos);
-                oos.writeObject(imageList);
-                oos.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            Toast.makeText(this, "empty table", Toast.LENGTH_SHORT).show();
         }
+        cursor.close();
+        db.close();
+    }
+
+    public void updateTitle(String imagePath, String newTitle) {
+        DBHelper dbHelper = new DBHelper(this);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(Image.TITLE, newTitle);
+        String selection = Image.IMAGE_PATH + " LIKE ?";
+        String[] selectionArgs = {imagePath};
+        db.update(DBHelper.TABLE_NAME, cv, selection, selectionArgs);
+        db.close();
+    }
+
+    public void deleteImage(String imagePath) {
+        DBHelper dbHelper = new DBHelper(this);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        String selection = Image.IMAGE_PATH + " LIKE ?";
+        String[] selectionArgs = {imagePath};
+        db.delete(DBHelper.TABLE_NAME, selection, selectionArgs);
+        db.close();
     }
 
     private void createImageList() {
         imageList = new ArrayList<Image>();
 
-        imageList.add(new Image("Mountains", "backgrounds/mountains.jpg", "thumbnails/thumbnail_Mountains.jpg", true));
-        imageList.add(new Image("Funny Cat", "backgrounds/funny_cat.jpg", "thumbnails/thumbnail_Funny_Cat.jpg", true));
-        imageList.add(new Image("Pollen", "backgrounds/pollen.jpg", "thumbnails/thumbnail_Pollen.jpg", true));
-        imageList.add(new Image("Colors", "backgrounds/colors.jpg", "thumbnails/thumbnail_Colors.jpg", true));
+        imageList.add(new Image("Mountains", "backgrounds/mountains.jpg", "thumbnails/thumbnail_mountains.jpg"));
+        imageList.add(new Image("Funny Cat", "backgrounds/funny_cat.jpg", "thumbnails/thumbnail_funny_cat.jpg"));
+        imageList.add(new Image("Pollen", "backgrounds/pollen.jpg", "thumbnails/thumbnail_pollen.jpg"));
+        imageList.add(new Image("Colors", "backgrounds/colors.jpg", "thumbnails/thumbnail_colors.jpg"));
 
-        imageList.add(new Image("Blueberries", "backgrounds/blueberries.jpeg", "thumbnails/thumbnail_Blueberries.jpg", true));
-        imageList.add(new Image("Castle", "backgrounds/castle.jpg", "thumbnails/thumbnail_Castle.jpg", true));
-        imageList.add(new Image("Cherries", "backgrounds/cherries.jpeg", "thumbnails/thumbnail_Cherries.jpg", true));
-        imageList.add(new Image("Fruit", "backgrounds/fruit.jpeg", "thumbnails/thumbnail_Fruit.jpg", true));
-        imageList.add(new Image("Islands", "backgrounds/islands.jpeg", "thumbnails/thumbnail_Islands.jpg", true));
-        imageList.add(new Image("Maldives", "backgrounds/maldives.jpeg", "thumbnails/thumbnail_Maldives.jpg", true));
-        imageList.add(new Image("Milky Way", "backgrounds/milkyway.jpeg", "thumbnails/thumbnail_Milky_Way.jpg", true));
-        imageList.add(new Image("Mountain Ridge", "backgrounds/mountains2.jpg", "thumbnails/thumbnail_Mountain_Ridge.jpg", true));
-        imageList.add(new Image("Raspberry", "backgrounds/raspberry.jpeg", "thumbnails/thumbnail_Raspberry.jpg", true));
-        imageList.add(new Image("Space", "backgrounds/space.jpg", "thumbnails/thumbnail_Space.jpg", true));
-        imageList.add(new Image("Zen", "backgrounds/zen.jpg", "thumbnails/thumbnail_Zen.jpg", true));
+        imageList.add(new Image("Blueberries", "backgrounds/blueberries.jpeg", "thumbnails/thumbnail_blueberries.jpg"));
+        imageList.add(new Image("Castle", "backgrounds/castle.jpg", "thumbnails/thumbnail_castle.jpg"));
+        imageList.add(new Image("Cherries", "backgrounds/cherries.jpeg", "thumbnails/thumbnail_cherries.jpg"));
+        imageList.add(new Image("Fruit", "backgrounds/fruit.jpeg", "thumbnails/thumbnail_fruit.jpg"));
+        imageList.add(new Image("Islands", "backgrounds/islands.jpeg", "thumbnails/thumbnail_islands.jpg"));
+        imageList.add(new Image("Maldives", "backgrounds/maldives.jpeg", "thumbnails/thumbnail_maldives.jpg"));
+        imageList.add(new Image("Milky Way", "backgrounds/milkyway.jpeg", "thumbnails/thumbnail_milky_way.jpg"));
+        imageList.add(new Image("Mountain Ridge", "backgrounds/mountains2.jpg", "thumbnails/thumbnail_mountain_ridge.jpg"));
+        imageList.add(new Image("Raspberry", "backgrounds/raspberry.jpeg", "thumbnails/thumbnail_raspberry.jpg"));
+        imageList.add(new Image("Space", "backgrounds/space.jpg", "thumbnails/thumbnail_space.jpg"));
+        imageList.add(new Image("Zen", "backgrounds/zen.jpg", "thumbnails/thumbnail_zen.jpg"));
 
-        saveData();
+        saveList();
     }
 
     public void fillImageList() {
@@ -119,13 +137,14 @@ public class ListActivity extends Activity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
                 Intent intent = new Intent();
-                intent.putExtra(FifteenActivity.IMAGE_PATH, imageList.get(i).getImagePath());
-                intent.putExtra(FifteenActivity.IS_DEFAULT, imageList.get(i).isDefault());
+                intent.putExtra(Image.IMAGE_PATH, imageList.get(i).getImagePath());
+                intent.putExtra(Image.IS_DEFAULT, imageList.get(i).isDefault());
+                intent.putExtra(Image.IS_PROCESSED, imageList.get(i).isProcessed());
+                intent.putExtra(Image.DOMINANT_COLOR, imageList.get(i).getDominantColor());
                 setResult(RESULT_OK, intent);
                 finish();
             }
         });
-
     }
 
     @Override
@@ -151,10 +170,7 @@ public class ListActivity extends Activity {
                 try {
                     if (resultCode == RESULT_OK && null != data) {
                         Uri selectedImageUri = data.getData();
-                        //todo: learn how AsyncTask synchronizes imageList
-//                        ArrayList<Image> imageList2 = new ArrayList<>();
-//                        imageList2.add(new Image("Mountains", "backgrounds/mountains.jpg", "thumbnails/thumbnail_Mountains.jpg", true));
-                        // If we pass imageList2 as a param, adapter wont be synchronized
+
                         TaskAddImage taskAddImage = new TaskAddImage(imageList, ListActivity.this);
                         taskAddImage.execute(selectedImageUri);
 

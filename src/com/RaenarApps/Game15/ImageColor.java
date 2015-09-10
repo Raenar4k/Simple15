@@ -101,7 +101,7 @@ public class ImageColor {
         if (s.length() == 6) {
 //            Toast.makeText(context, "Length = 6", Toast.LENGTH_SHORT).show();
 //            Toast.makeText(context, "S: "+s, Toast.LENGTH_SHORT).show();
-            return s;
+            return "#"+s;
         }
 //        Toast.makeText(context, "Length < 6", Toast.LENGTH_SHORT).show();
         return null;

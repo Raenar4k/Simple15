@@ -32,4 +32,20 @@
     <string name="item_edit_Title">Введите новое название для изображения</string>
     <string name="item_edit_clear">Очистить</string>
     <string name="win_congratulations">Поздравляем! Вы успешно собрали головоломку!</string>
+
+    <string name="slide1_top">Игра в 15 или \"пятнашки\" представляет собой головоломку на поле 4х4.</string>
+    <string name="slide1_bot">Цель игры - используя пустую ячейку упорядочить перемешанные кусочки изображения.</string>
+    <string name="slide2_top">Перед началом игры вам будет предложено выбрать изображение из которого будет составлена
+        головоломка </string>
+    <string name="slide2_bot">Вы также можете добавить свое изображение, нажав на кнопку \"+\"</string>
+    <string name="slide3_top">Используйте подсказку чтобы правильно собрать головоломку</string>
+    <string name="slide3_bot">Различные опции помогут настроить игру как вам удобно</string>
+    <string name="slide4_top">Вы можете переключаться между 3 режимами игры</string>
+    <string name="slide4_bot">В любой момент вы можете сменить изображение, не потеряв своего прогресса.</string>
+    <string name="slide5_top">Упрощенный режим</string>
+    <string name="slide5_bot">Классические \"пятнашки\"</string>
+    <string name="slide6_top">Режим изображения</string>
+    <string name="slide6_bot">Попробуйте игру на разных изображениях</string>
+    <string name="slide7_top">Смешанный режим</string>
+    <string name="slide7_bot">Отлично подходит для светлых изображений</string>
 </resources>

@@ -55,21 +55,24 @@ public class MainMenu extends Activity {
         super.onActivityResult(requestCode, resultCode, data);
         switch (requestCode) {
             case FifteenActivity.RC_List:
-                String imagePathGlobal;
-                boolean isDefaultGlobal;
+                String imagePath;
+                boolean isDefault;
+                boolean isProcessed;
+                String dominantColor;
                 Intent intent = new Intent(this, FifteenActivity.class);
-                if ((resultCode == RESULT_OK) && (data.hasExtra(FifteenActivity.IMAGE_PATH))) {
-                    imagePathGlobal = data.getStringExtra(FifteenActivity.IMAGE_PATH);
-                    isDefaultGlobal = data.getBooleanExtra(FifteenActivity.IS_DEFAULT, false);
-                } else {
-                    imagePathGlobal = "backgrounds/pollen.jpg";
-                    isDefaultGlobal = true;
+                if ((resultCode == RESULT_OK) && (data.hasExtra(Image.IMAGE_PATH))) {
+                    imagePath = data.getStringExtra(Image.IMAGE_PATH);
+                    isDefault = data.getBooleanExtra(Image.IS_DEFAULT, false);
+                    isProcessed = data.getBooleanExtra(Image.IS_PROCESSED, false);
+                    dominantColor = data.getStringExtra(Image.DOMINANT_COLOR);
+                    intent.putExtra(Image.IMAGE_PATH, imagePath);
+                    intent.putExtra(Image.IS_DEFAULT, isDefault);
+                    intent.putExtra(Image.IS_PROCESSED, isProcessed);
+                    intent.putExtra(Image.DOMINANT_COLOR, dominantColor);
+                    intent.putExtra(FifteenActivity.IS_NEW_GAME, true);
+                    setResult(RESULT_OK, intent);
+                    startActivityForResult(intent, REQUEST_UPDATE);
                 }
-                intent.putExtra(FifteenActivity.IMAGE_PATH, imagePathGlobal);
-                intent.putExtra(FifteenActivity.IS_DEFAULT, isDefaultGlobal);
-                intent.putExtra(FifteenActivity.IS_NEW_GAME, true);
-                setResult(RESULT_OK, intent);
-                startActivityForResult(intent, REQUEST_UPDATE);
                 break;
             case REQUEST_UPDATE:
                 updateMenu();
