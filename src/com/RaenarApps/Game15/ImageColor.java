@@ -2,6 +2,9 @@ package com.RaenarApps.Game15;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.util.Log;
+import android.widget.Toast;
 
 import java.util.*;
 
@@ -9,6 +12,7 @@ import java.util.*;
  * Created by Raenar on 27.07.2015.
  */
 public class ImageColor {
+    public static final String TAG = "ImageColor";
     String dominantColor;
 
 
@@ -58,7 +62,20 @@ public class ImageColor {
         Map.Entry me = (Map.Entry) list.get(list.size() - 1);
         int[] rgb = getRGBArr((Integer) me.getKey());
 
-        return Integer.toHexString(rgb[0]) + " " + Integer.toHexString(rgb[1]) + " " + Integer.toHexString(rgb[2]);
+        StringBuilder hexRGB = new StringBuilder();
+        for (int i = 0; i < 3; i++) {
+            String hexColor = Integer.toHexString(rgb[i]);
+            if (hexColor.length() < 2) {
+                hexColor = "0" + hexColor;
+            }
+            hexRGB.append(hexColor);
+        }
+        Log.v(TAG, "red= " + Integer.toHexString(rgb[0]));
+        Log.v(TAG, "green= " + Integer.toHexString(rgb[1]));
+        Log.v(TAG, "blue= " + Integer.toHexString(rgb[2]));
+        Log.v(TAG, "Color str =  "+ hexRGB);
+
+        return hexRGB.toString();
 
     }
 
@@ -91,40 +108,11 @@ public class ImageColor {
     }
 
 
-    public String returnColour(Context context) {
-        String s = dominantColor.replaceAll("\\s", "");
-        if (s.length() > 6) {
-//            Toast.makeText(context, "Length > 6", Toast.LENGTH_SHORT).show();
-//            Toast.makeText(context, "PRE OP: " + dominantColor, Toast.LENGTH_SHORT).show();
-//            Toast.makeText(context, "POST OP: " + s, Toast.LENGTH_SHORT).show();
+    public String returnColour() {
+        if (dominantColor.length() == 6) {
+            return "#"+dominantColor;
         }
-        if (s.length() == 6) {
-//            Toast.makeText(context, "Length = 6", Toast.LENGTH_SHORT).show();
-//            Toast.makeText(context, "S: "+s, Toast.LENGTH_SHORT).show();
-            return "#"+s;
-        }
-//        Toast.makeText(context, "Length < 6", Toast.LENGTH_SHORT).show();
         return null;
     }
 }
 
-//    public String returnColour(Context context) {
-//
-//        if (dominantColor.length() > 6) {
-////            Toast.makeText(context, "Length > 6", Toast.LENGTH_SHORT).show();
-////            Toast.makeText(context, "PRE OP: " + dominantColor, Toast.LENGTH_SHORT).show();
-//            String s = dominantColor.replaceAll("\\s", "");
-////            Toast.makeText(context, "POST OP: " + s, Toast.LENGTH_SHORT).show();
-//            return s;
-//        } else {
-//            if (dominantColor.length() < 6) {
-////                Toast.makeText(context, "Length < 6", Toast.LENGTH_SHORT).show();
-//                return null;
-//            } else {
-////                Toast.makeText(context, "Length = 6", Toast.LENGTH_SHORT).show();
-//                return dominantColor;
-//            }
-////            return "#ffffff0c";
-//        }
-//    }
-//}
