@@ -92,7 +92,7 @@ public class ImageColor {
         int rgDiff = rgbArr[0] - rgbArr[1];
         int rbDiff = rgbArr[0] - rgbArr[2];
 
-        int tolerance = 12;
+        int tolerance = 10;
 
         if (rgDiff > tolerance || rgDiff < -tolerance)
             if (rbDiff > tolerance || rbDiff < -tolerance) {
