@@ -32,6 +32,7 @@
 
 # IntelliJ
 /out/
+/gen/
 
 
 # Windows image file caches
