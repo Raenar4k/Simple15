@@ -37,6 +37,8 @@ public class FifteenActivity extends Activity {
     public static final String EMPTY_SPACE_X = "Empty space x";
     public static final String EMPTY_SPACE_Y = "Empty space y";
     public static final String IS_NEW_GAME = "IsNewGame";
+    public static final String SIMPLE_MODE = "simpleMode";
+    public static final String SHOW_NUMBERS = "showNumbers";
 
     private Button[][] buttons = new Button[ROW_COUNT][COLUMN_COUNT];
     private int[][] array = new int[ROW_COUNT][COLUMN_COUNT]; // tiles numbers
@@ -101,6 +103,8 @@ public class FifteenActivity extends Activity {
             isDefaultGlobal = sharedPreferences.getBoolean(Image.IS_DEFAULT, true);
             isProcessedGlobal = sharedPreferences.getBoolean(Image.IS_PROCESSED, false);
             dominantColorGlobal = sharedPreferences.getString(Image.DOMINANT_COLOR, null);
+            simpleMode = sharedPreferences.getBoolean(SIMPLE_MODE, false);
+            showNumbers = sharedPreferences.getBoolean(SHOW_NUMBERS, false);
         }
         TaskLoadImage taskLoadImage = new TaskLoadImage(this, imagePathGlobal, isDefaultGlobal, isProcessedGlobal,
                 chunkedImages, dominantColorGlobal);
@@ -467,6 +471,8 @@ public class FifteenActivity extends Activity {
         editor.putBoolean(Image.IS_PROCESSED, isProcessedGlobal);
         editor.putString(Image.DOMINANT_COLOR, dominantColorGlobal);
         editor.putBoolean(IS_NEW_GAME, false);
+        editor.putBoolean(SIMPLE_MODE, simpleMode);
+        editor.putBoolean(SHOW_NUMBERS, showNumbers);
         editor.apply();
     }
 
