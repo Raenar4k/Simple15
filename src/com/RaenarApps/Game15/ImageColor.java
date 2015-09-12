@@ -1,10 +1,7 @@
 package com.RaenarApps.Game15;
 
-import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.util.Log;
-import android.widget.Toast;
 
 import java.util.*;
 
@@ -108,7 +105,7 @@ public class ImageColor {
     }
 
 
-    public String returnColour() {
+    public String returnColor() {
         if (dominantColor.length() == 6) {
             return "#"+dominantColor;
         }

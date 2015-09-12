@@ -18,7 +18,7 @@ public class ImageHelper {
         Bitmap sampledBitmap = getSampledBitmap(context, imagePath, isDefault, 200, 200);
         try {
             ImageColor imageColour = new ImageColor(sampledBitmap);
-            return imageColour.returnColour();
+            return imageColour.returnColor();
         } catch (Exception e) {
             e.printStackTrace();
         }
