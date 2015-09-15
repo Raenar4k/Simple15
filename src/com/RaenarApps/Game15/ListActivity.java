@@ -118,7 +118,7 @@ public class ListActivity extends Activity {
         imageList.add(new Image("Cherries", "backgrounds/cherries.jpeg", "thumbnails/thumbnail_cherries.jpg"));
         imageList.add(new Image("Fruit", "backgrounds/fruit.jpeg", "thumbnails/thumbnail_fruit.jpg"));
         imageList.add(new Image("Islands", "backgrounds/islands.jpeg", "thumbnails/thumbnail_islands.jpg"));
-        imageList.add(new Image("Maldives", "backgrounds/maldives.jpeg", "thumbnails/thumbnail_maldives.jpg"));
+        imageList.add(new Image("Apricots", "backgrounds/apricots.jpeg", "thumbnails/thumbnail_apricots.jpg"));
         imageList.add(new Image("Milky Way", "backgrounds/milkyway.jpeg", "thumbnails/thumbnail_milky_way.jpg"));
         imageList.add(new Image("Mountain Ridge", "backgrounds/mountains2.jpg", "thumbnails/thumbnail_mountain_ridge.jpg"));
         imageList.add(new Image("Raspberry", "backgrounds/raspberry.jpeg", "thumbnails/thumbnail_raspberry.jpg"));
