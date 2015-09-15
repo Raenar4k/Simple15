@@ -33,12 +33,13 @@ public class FifteenActivity extends Activity {
 
     public static final String TAG = "FIFTEEN ACTIVITY";
     //Various keys
-    public static final String ARRAY = "Array";
-    public static final String EMPTY_SPACE_X = "Empty space x";
-    public static final String EMPTY_SPACE_Y = "Empty space y";
-    public static final String IS_NEW_GAME = "IsNewGame";
+    public static final String ARRAY = "array";
+    public static final String EMPTY_SPACE_X = "empty space x";
+    public static final String EMPTY_SPACE_Y = "empty space y";
+    public static final String IS_NEW_GAME = "isNewGame";
     public static final String SIMPLE_MODE = "simpleMode";
     public static final String SHOW_NUMBERS = "showNumbers";
+    public static final String ADAPTIVE_BACKGROUND = "adaptiveBackground";
 
     private Button[][] buttons = new Button[ROW_COUNT][COLUMN_COUNT];
     private int[][] array = new int[ROW_COUNT][COLUMN_COUNT]; // tiles numbers
@@ -58,7 +59,6 @@ public class FifteenActivity extends Activity {
     boolean simpleMode = false; // True - simple tiles, false - chuncks of image
     boolean showNumbers = false; // True - show numbers on tiles
     boolean adaptiveBackground = true; // True - the background will be of dominant color of the image, false - def. color
-    boolean gradientBackground = true; // True - the background will be a gradient of current color
 
     View cheatView;
     View tableView;
@@ -105,6 +105,7 @@ public class FifteenActivity extends Activity {
             dominantColorGlobal = sharedPreferences.getString(Image.DOMINANT_COLOR, null);
             simpleMode = sharedPreferences.getBoolean(SIMPLE_MODE, false);
             showNumbers = sharedPreferences.getBoolean(SHOW_NUMBERS, false);
+            adaptiveBackground = sharedPreferences.getBoolean(ADAPTIVE_BACKGROUND, true);
         }
         TaskLoadImage taskLoadImage = new TaskLoadImage(this, imagePathGlobal, isDefaultGlobal, isProcessedGlobal,
                 chunkedImages, dominantColorGlobal);
@@ -294,7 +295,7 @@ public class FifteenActivity extends Activity {
             root.setBackgroundColor(Color.parseColor(backgroundColorDefault));
         }
         RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.rlContain);
-        if (gradientBackground) {
+        if (adaptiveBackground) {
             relativeLayout.setBackground(getResources().getDrawable(R.drawable.gradient_background));
         } else {
             relativeLayout.setBackground(getResources().getDrawable(R.drawable.transparent_background));
@@ -365,11 +366,9 @@ public class FifteenActivity extends Activity {
             case R.id.adaptiveBackground:
                 if (adaptiveBackground) {
                     adaptiveBackground = false;
-                    gradientBackground = false;
                     item.setTitle(getString(R.string.oMenu_Adaptive_OFF));
                 } else {
                     adaptiveBackground = true;
-                    gradientBackground = true;
                     item.setTitle(R.string.oMenu_Adaptive_ON);
                 }
                 updateUI();
@@ -473,6 +472,7 @@ public class FifteenActivity extends Activity {
         editor.putBoolean(IS_NEW_GAME, false);
         editor.putBoolean(SIMPLE_MODE, simpleMode);
         editor.putBoolean(SHOW_NUMBERS, showNumbers);
+        editor.putBoolean(ADAPTIVE_BACKGROUND, adaptiveBackground);
         editor.apply();
     }
 
