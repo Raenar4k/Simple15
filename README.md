@@ -18,8 +18,11 @@ Thanks to Jarrod Robins for SimpleViewPagerIndicator!
 https://github.com/jarrodrobins/SimpleViewPagerIndicator
 
 ### License
-   Copyright 2015 Ilia Voitcekhovskii
+Simple 15 
 
-   Licensed under the Apache License, Version 2.0 (the "License");
-   you may not use this file except in compliance with the License.
-   You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
+Copyright (C) 2015  Ilia Voitcekhovskii
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
