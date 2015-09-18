@@ -10,7 +10,7 @@
             android:id="@+id/rlContain"
 
             >
-        <com.RaenarApps.Game15.SquareLayout
+        <com.RaenarApps.Game15.view.SquareLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/customView"
@@ -24,66 +24,66 @@
 
                 <TableRow>
 
-                    <com.RaenarApps.Game15.SquareButton android:id="@+id/button11" android:visibility="visible"
+                    <com.RaenarApps.Game15.view.SquareButton android:id="@+id/button11" android:visibility="visible"
                                              android:layout_margin="1dp"/>
 
-                    <com.RaenarApps.Game15.SquareButton android:id="@+id/button12" android:visibility="visible"
+                    <com.RaenarApps.Game15.view.SquareButton android:id="@+id/button12" android:visibility="visible"
                                              android:layout_margin="1dp"/>
 
-                    <com.RaenarApps.Game15.SquareButton android:id="@+id/button13" android:visibility="visible"
+                    <com.RaenarApps.Game15.view.SquareButton android:id="@+id/button13" android:visibility="visible"
                                              android:layout_margin="1dp"/>
 
-                    <com.RaenarApps.Game15.SquareButton android:id="@+id/button14" android:visibility="visible"
-                                             android:layout_margin="1dp"/>
-                </TableRow>
-
-                <TableRow>
-
-                    <com.RaenarApps.Game15.SquareButton android:id="@+id/button21" android:visibility="visible"
-                                             android:layout_margin="1dp"/>
-
-                    <com.RaenarApps.Game15.SquareButton android:id="@+id/button22" android:visibility="visible"
-                                             android:layout_margin="1dp"/>
-
-                    <com.RaenarApps.Game15.SquareButton android:id="@+id/button23" android:visibility="visible"
-                                             android:layout_margin="1dp"/>
-
-                    <com.RaenarApps.Game15.SquareButton android:id="@+id/button24" android:visibility="visible"
+                    <com.RaenarApps.Game15.view.SquareButton android:id="@+id/button14" android:visibility="visible"
                                              android:layout_margin="1dp"/>
                 </TableRow>
 
                 <TableRow>
 
-                    <com.RaenarApps.Game15.SquareButton android:id="@+id/button31" android:visibility="visible"
+                    <com.RaenarApps.Game15.view.SquareButton android:id="@+id/button21" android:visibility="visible"
                                              android:layout_margin="1dp"/>
 
-                    <com.RaenarApps.Game15.SquareButton android:id="@+id/button32" android:visibility="visible"
+                    <com.RaenarApps.Game15.view.SquareButton android:id="@+id/button22" android:visibility="visible"
                                              android:layout_margin="1dp"/>
 
-                    <com.RaenarApps.Game15.SquareButton android:id="@+id/button33" android:visibility="visible"
+                    <com.RaenarApps.Game15.view.SquareButton android:id="@+id/button23" android:visibility="visible"
                                              android:layout_margin="1dp"/>
 
-                    <com.RaenarApps.Game15.SquareButton android:id="@+id/button34" android:visibility="visible"
+                    <com.RaenarApps.Game15.view.SquareButton android:id="@+id/button24" android:visibility="visible"
                                              android:layout_margin="1dp"/>
                 </TableRow>
 
                 <TableRow>
 
-                    <com.RaenarApps.Game15.SquareButton android:id="@+id/button41" android:visibility="visible"
+                    <com.RaenarApps.Game15.view.SquareButton android:id="@+id/button31" android:visibility="visible"
                                              android:layout_margin="1dp"/>
 
-                    <com.RaenarApps.Game15.SquareButton android:id="@+id/button42" android:visibility="visible"
+                    <com.RaenarApps.Game15.view.SquareButton android:id="@+id/button32" android:visibility="visible"
                                              android:layout_margin="1dp"/>
 
-                    <com.RaenarApps.Game15.SquareButton android:id="@+id/button43" android:visibility="visible"
+                    <com.RaenarApps.Game15.view.SquareButton android:id="@+id/button33" android:visibility="visible"
                                              android:layout_margin="1dp"/>
 
-                    <com.RaenarApps.Game15.SquareButton android:id="@+id/button44" android:visibility="visible"
+                    <com.RaenarApps.Game15.view.SquareButton android:id="@+id/button34" android:visibility="visible"
+                                             android:layout_margin="1dp"/>
+                </TableRow>
+
+                <TableRow>
+
+                    <com.RaenarApps.Game15.view.SquareButton android:id="@+id/button41" android:visibility="visible"
+                                             android:layout_margin="1dp"/>
+
+                    <com.RaenarApps.Game15.view.SquareButton android:id="@+id/button42" android:visibility="visible"
+                                             android:layout_margin="1dp"/>
+
+                    <com.RaenarApps.Game15.view.SquareButton android:id="@+id/button43" android:visibility="visible"
+                                             android:layout_margin="1dp"/>
+
+                    <com.RaenarApps.Game15.view.SquareButton android:id="@+id/button44" android:visibility="visible"
                                              android:layout_margin="1dp"/>
                 </TableRow>
             </TableLayout>
 
-        </com.RaenarApps.Game15.SquareLayout>
+        </com.RaenarApps.Game15.view.SquareLayout>
 
         <LinearLayout
                 android:orientation="horizontal"

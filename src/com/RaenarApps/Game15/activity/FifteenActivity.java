@@ -1,4 +1,4 @@
-package com.RaenarApps.Game15;
+package com.RaenarApps.Game15.activity;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -17,6 +17,10 @@ import android.view.*;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.RelativeLayout;
+import com.RaenarApps.Game15.model.Image;
+import com.RaenarApps.Game15.model.Point;
+import com.RaenarApps.Game15.R;
+import com.RaenarApps.Game15.task.TaskLoadImage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,19 +55,19 @@ public class FifteenActivity extends Activity {
 
     final String backgroundColorDefault = "#f1122e06";
 
-    String imagePathGlobal;
-    boolean isDefaultGlobal;
-    boolean isProcessedGlobal;
-    String dominantColorGlobal; // Can be changed to dominant color of the image
+    public String imagePathGlobal;
+    private boolean isDefaultGlobal;
+    public boolean isProcessedGlobal;
+    public String dominantColorGlobal; // Can be changed to dominant color of the image
 
-    boolean simpleMode = false; // True - simple tiles, false - chuncks of image
-    boolean showNumbers = false; // True - show numbers on tiles
-    boolean adaptiveBackground = true; // True - the background will be of dominant color of the image, false - def. color
+    private boolean simpleMode = false; // True - simple tiles, false - chuncks of image
+    private boolean showNumbers = false; // True - show numbers on tiles
+    private boolean adaptiveBackground = true; // True - the background will be of dominant color of the image, false - def. color
 
-    View cheatView;
-    View tableView;
+    private View cheatView;
+    private View tableView;
     private int animationDuration;
-    boolean showPicture = false; // False - hint is not visible
+    private boolean showPicture = false; // False - hint is not visible
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

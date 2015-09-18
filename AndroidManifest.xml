@@ -15,7 +15,7 @@
             android:icon="@drawable/ic_launcher_v1"
             android:label="@string/app_name">
         <activity
-                android:name=".MainMenu"
+                android:name=".activity.MainMenu"
                 android:label="@string/app_name"
                 android:screenOrientation="portrait"
                 android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
@@ -26,18 +26,18 @@
             </intent-filter>
         </activity>
         <activity
-                android:name=".FifteenActivity"
+                android:name=".activity.FifteenActivity"
                 android:screenOrientation="portrait"
                 android:configChanges="orientation|screenSize"
                 android:label="@string/app_name"
                 android:theme="@style/Theme15">
         </activity>
         <activity android:label="@string/app_name"
-                  android:name=".ListActivity"
+                  android:name=".activity.ListActivity"
                   android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
                 />
         <activity android:label="@string/app_name"
-                  android:name=".SlideActivity"
+                  android:name=".activity.SlideActivity"
                   android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
                 />
     </application>

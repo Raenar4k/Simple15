@@ -1,4 +1,4 @@
-package com.RaenarApps.Game15;
+package com.RaenarApps.Game15.view;
 
 import android.content.Context;
 import android.util.AttributeSet;

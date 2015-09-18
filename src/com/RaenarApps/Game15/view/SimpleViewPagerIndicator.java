@@ -1,4 +1,4 @@
-package com.RaenarApps.Game15;
+package com.RaenarApps.Game15.view;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import com.RaenarApps.Game15.R;
 
 /**
  * @author Jarrod Robins, Papercloud

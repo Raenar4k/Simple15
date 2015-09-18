@@ -1,4 +1,4 @@
-package com.RaenarApps.Game15;
+package com.RaenarApps.Game15.view;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 

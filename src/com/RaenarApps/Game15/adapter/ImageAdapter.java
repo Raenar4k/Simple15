@@ -1,4 +1,4 @@
-package com.RaenarApps.Game15;
+package com.RaenarApps.Game15.adapter;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -13,6 +13,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
+import com.RaenarApps.Game15.R;
+import com.RaenarApps.Game15.activity.ListActivity;
+import com.RaenarApps.Game15.model.Image;
 
 import java.io.*;
 import java.util.ArrayList;

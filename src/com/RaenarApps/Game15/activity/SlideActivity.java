@@ -1,9 +1,13 @@
-package com.RaenarApps.Game15;
+package com.RaenarApps.Game15.activity;
 
 import android.os.Bundle;
 import android.support.v4.app.*;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import com.RaenarApps.Game15.R;
+import com.RaenarApps.Game15.view.SimpleViewPagerIndicator;
+import com.RaenarApps.Game15.fragment.SlideFragment;
+import com.RaenarApps.Game15.view.ZoomOutPageTransformer;
 
 public class SlideActivity extends FragmentActivity {
 

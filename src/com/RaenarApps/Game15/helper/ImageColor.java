@@ -1,4 +1,4 @@
-package com.RaenarApps.Game15;
+package com.RaenarApps.Game15.helper;
 
 import android.graphics.Bitmap;
 import android.util.Log;

@@ -1,4 +1,4 @@
-package com.RaenarApps.Game15;
+package com.RaenarApps.Game15.activity;
 
 import android.app.Activity;
 import android.content.ContentValues;
@@ -7,9 +7,13 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.view.View;
 import android.widget.*;
+import com.RaenarApps.Game15.*;
+import com.RaenarApps.Game15.adapter.ImageAdapter;
+import com.RaenarApps.Game15.helper.DBHelper;
+import com.RaenarApps.Game15.model.Image;
+import com.RaenarApps.Game15.task.TaskAddImage;
 
 import java.io.*;
 import java.util.ArrayList;

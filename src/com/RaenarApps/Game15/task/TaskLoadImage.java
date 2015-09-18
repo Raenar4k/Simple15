@@ -1,4 +1,4 @@
-package com.RaenarApps.Game15;
+package com.RaenarApps.Game15.task;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -12,6 +12,11 @@ import android.view.ContextThemeWrapper;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.widget.ImageView;
+import com.RaenarApps.Game15.R;
+import com.RaenarApps.Game15.activity.FifteenActivity;
+import com.RaenarApps.Game15.helper.DBHelper;
+import com.RaenarApps.Game15.helper.ImageHelper;
+import com.RaenarApps.Game15.model.Image;
 
 import java.io.File;
 import java.io.FileNotFoundException;

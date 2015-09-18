@@ -1,8 +1,9 @@
-package com.RaenarApps.Game15;
+package com.RaenarApps.Game15.helper;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import com.RaenarApps.Game15.model.Image;
 
 /**
  * Created by Raenar on 04.09.2015.

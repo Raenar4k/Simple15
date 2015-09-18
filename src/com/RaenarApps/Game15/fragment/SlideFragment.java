@@ -1,9 +1,10 @@
-package com.RaenarApps.Game15;
+package com.RaenarApps.Game15.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import com.RaenarApps.Game15.R;
 
 /**
  * Created by Raenar on 09.08.2015.
