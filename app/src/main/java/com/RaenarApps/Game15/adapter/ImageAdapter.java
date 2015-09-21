@@ -81,7 +81,7 @@ public class ImageAdapter extends BaseAdapter {
                 final Dialog dialog = new Dialog(wrapper);
                 dialog.setContentView(R.layout.edit_dialog);
                 dialog.setTitle(wrapper.getString(R.string.item_edit_Title));
-                EditText editText = (EditText) dialog.findViewById(R.id.editTitle);
+                final EditText editText = (EditText) dialog.findViewById(R.id.editTitle);
                 editText.setText(((ListActivity) context).imageList.get(i).getTitle());
 
                 Button okButton = (Button) dialog.findViewById(R.id.okButton);
