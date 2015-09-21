@@ -49,11 +49,12 @@ public class ImageAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int i, View listItem, ViewGroup viewGroup) {
+    public View getView(int itemIndex, View listItem, ViewGroup viewGroup) {
         if (listItem == null) {
             listItem = LayoutInflater.from(context).inflate(R.layout.listitem_image, null);
         }
 
+        final int i = itemIndex;
         Image image = imageArrayList.get(i);
         ImageView thumbnail = (ImageView) listItem.findViewById(R.id.imageThumbnail);
         TextView title = (TextView) listItem.findViewById(R.id.imageTitle);
