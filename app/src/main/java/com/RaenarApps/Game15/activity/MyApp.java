@@ -56,9 +56,9 @@ public class MyApp extends Application {
 
         // Enable Remarketing, Demographics & Interests reports
         // https://developers.google.com/analytics/devguides/collection/android/display-features
-        tracker.enableAdvertisingIdCollection(true);
+//        tracker.enableAdvertisingIdCollection(true);
 
         // Enable automatic activity tracking for your app
-        tracker.enableAutoActivityTracking(true);
+//        tracker.enableAutoActivityTracking(true);
     }
 }
