@@ -29,7 +29,8 @@ public class BitmapHelper {
         int reqSize = Math.min(displayHeight, displayWidth);
         return Picasso.with(activity)
                 .load(new File(imagePath))
-                .transform(new SquareTransform(reqSize))
+                .resize(reqSize,reqSize)
+                .centerCrop()
                 .get();
     }
 

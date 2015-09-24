@@ -73,8 +73,12 @@ public class TaskAddImage extends AsyncTask<Uri, Void, Void> {
         Bitmap background = null;
         BitmapHelper bitmapHelper = new BitmapHelper();
         try {
+//            thumbnail = Picasso.with(activity).load(new File(imgPath))
+//                    .transform(new SquareTransform(200)).get();
             thumbnail = Picasso.with(activity).load(new File(imgPath))
-                    .transform(new SquareTransform(200)).get();
+                    .resize(200,200)
+                    .centerInside()
+                    .get();
             background = bitmapHelper.getScaledBackground(activity, imgPath);
         } catch (IOException e) {
             e.printStackTrace();

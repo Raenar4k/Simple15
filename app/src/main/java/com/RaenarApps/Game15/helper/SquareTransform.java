@@ -24,6 +24,9 @@ public class SquareTransform implements Transformation{
         cutBitmap.recycle();
         source.recycle();
         return scaledBitmap;
+
+        //Cant use in TaskAddImage
+        //Source can be big enough to run out of memory while resizing and cutting
     }
 
     @Override

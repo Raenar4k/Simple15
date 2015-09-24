@@ -119,6 +119,11 @@ public class TaskLoadImage extends AsyncTask<Void, Void, Void> {
                         .load("file:///android_asset/" + imagePath)
                         .transform(new SquareTransform(reqSize))
                         .get();
+//                scaledBitmap = Picasso.with(activity)
+//                        .load("file:///android_asset/" + imagePath)
+//                        .resize(reqSize,reqSize)
+//                        .centerCrop()
+//                        .get();
                 Log.d(TAG, "scaled size  = " + scaledBitmap.getWidth());
                 String fileName = new Date().getTime() + ".jpg";
                 newPath = new BitmapHelper().saveBitmap(activity, scaledBitmap, fileName, false);
