@@ -77,7 +77,7 @@ public class TaskAddImage extends AsyncTask<Uri, Void, Void> {
 //                    .transform(new SquareTransform(200)).get();
             thumbnail = Picasso.with(activity).load(new File(imgPath))
                     .resize(200,200)
-                    .centerInside()
+                    .centerCrop()
                     .get();
             background = bitmapHelper.getScaledBackground(activity, imgPath);
         } catch (IOException e) {
