@@ -118,6 +118,8 @@ public class TaskLoadImage extends AsyncTask<Void, Void, Void> {
                 scaledBitmap = Picasso.with(activity)
                         .load("file:///android_asset/" + imagePath)
                         .transform(new SquareTransform(reqSize))
+                        .resize(reqSize, reqSize)
+                        .centerInside()
                         .get();
 //                scaledBitmap = Picasso.with(activity)
 //                        .load("file:///android_asset/" + imagePath)
