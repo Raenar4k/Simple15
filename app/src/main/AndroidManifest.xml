@@ -34,7 +34,7 @@
         </activity>
         <activity android:label="@string/app_name"
                   android:name=".activity.ListActivity"
-                  android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+                  android:theme="@style/MatTheme"
                 />
         <activity android:label="@string/app_name"
                   android:name=".activity.SlideActivity"

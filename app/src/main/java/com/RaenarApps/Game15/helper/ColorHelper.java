@@ -11,7 +11,7 @@ import java.io.InputStream;
 /**
  * Created by Raenar on 30.07.2015.
  */
-public class ImageHelper {
+public class ColorHelper {
 
 
     public static String getDominantColor(Context context, String imagePath, boolean isDefault) {
@@ -22,48 +22,8 @@ public class ImageHelper {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        sampledBitmap.recycle();
         return null;
-    }
-
-    public static Bitmap loadBitmap(Context context, String imagePath, boolean isDefault) {
-        Bitmap bitmap = null;
-        InputStream inputStream = null;
-        try {
-            if (isDefault) {
-//                inputStream = context.getAssets().open(imagePath);
-                // STUB ONLY IF WE ARE GOING TO STORE PROCESSED BACKGROUNDS IN ASSESTS
-            } else {
-                inputStream = new FileInputStream(imagePath);
-            }
-            bitmap = BitmapFactory.decodeStream(inputStream);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (inputStream != null) {
-                try {
-                    inputStream.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        return bitmap;
-    }
-
-
-    public static Bitmap getScaledBitmap(Context context, String imagePath, boolean isDefault, int reqWidth, int reqHeight) {
-        Bitmap scaledBitmap = null;
-        Bitmap sampledBitmap = getSampledBitmap(context, imagePath, isDefault, reqWidth, reqHeight);
-        Bitmap cutBitmap;
-        if (sampledBitmap != null) {
-            if (sampledBitmap.getHeight() > sampledBitmap.getWidth()) {
-                cutBitmap = Bitmap.createBitmap(sampledBitmap, 0, 0, sampledBitmap.getWidth(), sampledBitmap.getWidth());
-            } else {
-                cutBitmap = Bitmap.createBitmap(sampledBitmap, 0, 0, sampledBitmap.getHeight(), sampledBitmap.getHeight());
-            }
-            scaledBitmap = Bitmap.createScaledBitmap(cutBitmap, reqWidth, reqHeight, true);
-        }
-        return scaledBitmap;
     }
 
     public static Bitmap getSampledBitmap(Context context, String imagePath, boolean isDefault, int reqWidth, int reqHeight) {

@@ -15,7 +15,9 @@ import android.view.ViewGroup;
 import android.widget.*;
 import com.RaenarApps.Game15.R;
 import com.RaenarApps.Game15.activity.ListActivity;
+import com.RaenarApps.Game15.helper.BitmapHelper;
 import com.RaenarApps.Game15.model.Image;
+import com.squareup.picasso.Picasso;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -59,13 +61,14 @@ public class ImageAdapter extends BaseAdapter {
         ImageView thumbnail = (ImageView) listItem.findViewById(R.id.imageThumbnail);
         TextView title = (TextView) listItem.findViewById(R.id.imageTitle);
 
-        Bitmap scaledImage = loadThumbnail(image.getThumbnailPath(), image.isDefault());
-//        Bitmap scaledImage = ImageHelper.getScaledBitmap(context,image.getImagePath(), image.isDefault(), 200,200);
-        if (scaledImage != null) {
-            thumbnail.setImageBitmap(scaledImage);
-//            saveThumbnail(scaledImage, image.getTitle());
+        if (image.isDefault()) {
+            Picasso.with(context)
+                    .load("file:///android_asset/" + image.getThumbnailPath())
+                    .into(thumbnail);
         } else {
-//            Toast.makeText(context, "NO THUMBNAIL CREATED", Toast.LENGTH_SHORT).show();
+            Picasso.with(context)
+                    .load(new File(image.getThumbnailPath()))
+                    .into(thumbnail);
         }
 
         String s = image.getTitle();
@@ -136,69 +139,4 @@ public class ImageAdapter extends BaseAdapter {
 
         return listItem;
     }
-
-    private void saveThumbnail(Bitmap scaledImage, String name) {
-        File pictureFile = createFile(name);
-        if (pictureFile == null) {
-            Log.d(TAG, "Creating file : ERROR");
-            return;
-        }
-        try {
-            FileOutputStream fileOutputStream = new FileOutputStream(pictureFile);
-            scaledImage.compress(Bitmap.CompressFormat.PNG, 100, fileOutputStream);
-            fileOutputStream.close();
-        } catch (FileNotFoundException e) {
-            Log.d(TAG, "File not found: " + e.getMessage());
-        } catch (IOException e) {
-            Log.d(TAG, "Error accessing file: " + e.getMessage());
-        }
-    }
-
-    private File createFile(String name) {
-        // To be safe, you should check that the SDCard is mounted
-        // using Environment.getExternalStorageState() before doing this.
-        File storageDir = new File(Environment.getExternalStorageDirectory()
-                + "/Android/data/"
-                + context.getPackageName()
-                + "/Thumbnails");
-        // This location works best if you want the created images to be shared
-        // between applications and persist after your app has been uninstalled.
-        // Create the storage directory if it does not exist
-        if (!storageDir.exists()) {
-            if (!storageDir.mkdirs()) {
-                return null;
-            }
-        }
-        // Create a media file name
-        File thumbnailFile;
-        String thumbnailName = "Thumbnail_" + name + ".jpg";
-        thumbnailFile = new File(storageDir.getPath() + File.separator + thumbnailName);
-        return thumbnailFile;
-    }
-
-    private Bitmap loadThumbnail(String imagePath, boolean isDefault) {
-        InputStream inputStream = null;
-        Bitmap sampledBitmap = null;
-        try {
-            if (isDefault) {
-                inputStream = context.getAssets().open(imagePath);
-            } else {
-                inputStream = new FileInputStream(imagePath);
-            }
-            sampledBitmap = BitmapFactory.decodeStream(inputStream);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (inputStream != null) {
-                try {
-                    inputStream.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        return sampledBitmap;
-    }
-
 }

@@ -8,17 +8,17 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.AsyncTask;
-import android.os.Environment;
 import android.provider.MediaStore;
 import android.provider.OpenableColumns;
-import android.util.Log;
-import android.view.Display;
 import android.view.LayoutInflater;
 import android.widget.ListView;
 import com.RaenarApps.Game15.R;
+import com.RaenarApps.Game15.helper.BitmapHelper;
+import com.RaenarApps.Game15.helper.ColorHelper;
 import com.RaenarApps.Game15.helper.DBHelper;
-import com.RaenarApps.Game15.helper.ImageHelper;
+import com.RaenarApps.Game15.helper.SquareTransform;
 import com.RaenarApps.Game15.model.Image;
+import com.squareup.picasso.Picasso;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -69,11 +69,24 @@ public class TaskAddImage extends AsyncTask<Uri, Void, Void> {
         String imgTitle = cursor.getString(nameIndex);
 
         String fileName = new Date().getTime() + ".jpg";
-        Bitmap thumbnail = ImageHelper.getScaledBitmap(activity, imgPath, false, 200, 200);
-        String thumbnailPath = saveBitmap(thumbnail, fileName, true);
-        Bitmap background = getScaledBackground(imgPath, false);
-        String backgroundPath = saveBitmap(background, fileName, false);
-        String dominantColor = ImageHelper.getDominantColor(activity, imgPath, false);
+        Bitmap thumbnail = null;
+        Bitmap background = null;
+        BitmapHelper bitmapHelper = new BitmapHelper();
+        try {
+//            thumbnail = Picasso.with(activity).load(new File(imgPath))
+//                    .transform(new SquareTransform(200)).get();
+            thumbnail = Picasso.with(activity).load(new File(imgPath))
+                    .resize(200,200)
+                    .centerCrop()
+                    .get();
+            background = bitmapHelper.getScaledBackground(activity, imgPath);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+//        thumbnail = ColorHelper.getScaledBitmap(activity, imgPath, false, 200, 200);
+        String thumbnailPath = bitmapHelper.saveBitmap(activity, thumbnail, fileName, true);
+        String backgroundPath = bitmapHelper.saveBitmap(activity, background, fileName, false);
+        String dominantColor = ColorHelper.getDominantColor(activity, imgPath, false);
         imageList_TASK.add(new Image(imgTitle, backgroundPath, thumbnailPath, false, true, dominantColor));
 
         DBHelper dbHelper = new DBHelper(activity);
@@ -101,67 +114,4 @@ public class TaskAddImage extends AsyncTask<Uri, Void, Void> {
         super.onPostExecute(aVoid);
     }
 
-    private Bitmap getScaledBackground(String imagePath, boolean isDefault) {
-        Display display = activity.getWindowManager().getDefaultDisplay();
-        android.graphics.Point point = new android.graphics.Point();
-        display.getSize(point);
-        int displayHeight = point.x;
-        int displayWidth = point.y;
-        int reqHeight;
-        int reqWidth;
-        if (displayHeight > displayWidth) {
-            reqHeight = reqWidth = displayWidth;
-        } else {
-            reqHeight = reqWidth = displayHeight;
-        }
-        return ImageHelper.getScaledBitmap(activity, imagePath, isDefault, reqWidth, reqHeight);
-    }
-
-    private String saveBitmap(Bitmap scaledImage, String name, boolean isThumbnail) {
-        File pictureFile = createFile(name, isThumbnail);
-        if (pictureFile == null) {
-            Log.d(TAG, "Creating file : ERROR");
-            return null;
-        } else {
-            try {
-                FileOutputStream fileOutputStream = new FileOutputStream(pictureFile);
-                scaledImage.compress(Bitmap.CompressFormat.PNG, 100, fileOutputStream);
-                fileOutputStream.close();
-            } catch (FileNotFoundException e) {
-                Log.d(TAG, "File not found: " + e.getMessage());
-            } catch (IOException e) {
-                Log.d(TAG, "Error accessing file: " + e.getMessage());
-            }
-            return pictureFile.getAbsolutePath();
-        }
-    }
-
-
-    private File createFile(String name, boolean isThumbnail) {
-        // To be safe, you should check that the SDCard is mounted
-        // using Environment.getExternalStorageState() before doing this.
-        String subDir;
-        String fileType;
-        if (isThumbnail) {
-            subDir = "/thumbnails";
-            fileType = "thumbnail_";
-        } else {
-            subDir = "/backgrounds";
-            fileType = "background_";
-        }
-        File storageDir = new File(Environment.getExternalStorageDirectory()
-                + "/Android/data/"
-                + activity.getApplicationContext().getPackageName()
-                + subDir);
-        // Create the storage directory if it does not exist
-        if (!storageDir.exists()) {
-            if (!storageDir.mkdirs()) {
-                return null;
-            }
-        }
-        File thumbnailFile;
-        String thumbnailName = fileType + name;
-        thumbnailFile = new File(storageDir.getPath() + File.separator + thumbnailName);
-        return thumbnailFile;
-    }
 }
