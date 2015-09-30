@@ -1,4 +1,4 @@
-<img src="http://i.imgur.com/g2GdSBI.png" />
+<img src="http://i.imgur.com/OYv9qaM.png" />
 
 ### About
 Simple 15 is a 15-puzzle game where you can also use images to make a puzzle.
