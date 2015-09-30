@@ -5,7 +5,7 @@ Simple 15 is a 15-puzzle game where you can also use images to make a puzzle.
 
 
 
-<img src="http://i.imgur.com/r7GeCzT.png" />
+<img src="http://i.imgur.com/6E58fpl.png" />
 
 **Main features:**
 * Clean UI, no ads.
