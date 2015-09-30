@@ -8,6 +8,7 @@ android {
         applicationId "com.RaenarApps.Game15"
         minSdkVersion 16
         targetSdkVersion 23
+        resConfigs "en","ru"
     }
 
     buildTypes {
