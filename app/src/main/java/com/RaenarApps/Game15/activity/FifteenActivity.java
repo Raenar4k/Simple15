@@ -13,16 +13,22 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.*;
+import android.view.ContextThemeWrapper;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.RelativeLayout;
+
+import com.RaenarApps.Game15.R;
 import com.RaenarApps.Game15.model.Image;
 import com.RaenarApps.Game15.model.Point;
-import com.RaenarApps.Game15.R;
 import com.RaenarApps.Game15.task.TaskLoadImage;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.StringTokenizer;
 
@@ -35,7 +41,7 @@ public class FifteenActivity extends Activity {
 
     public static final String PREFERENCES = "Simple15prefs";
 
-    public static final String TAG = "FIFTEEN ACTIVITY";
+    public static final String TAG = "Simple15";
     //Various keys
     public static final String ARRAY = "array";
     public static final String EMPTY_SPACE_X = "empty space x";
@@ -89,7 +95,7 @@ public class FifteenActivity extends Activity {
                 generateRandomArray();
             }
             imagePathGlobal = intent.getStringExtra(Image.IMAGE_PATH);
-            Log.d(TAG, "NewGame -> imagePathGlobal = "+imagePathGlobal);
+            Log.d(TAG, "NewGame -> imagePathGlobal = " + imagePathGlobal);
             isDefaultGlobal = intent.getBooleanExtra(Image.IS_DEFAULT, false);
             isProcessedGlobal = intent.getBooleanExtra(Image.IS_PROCESSED, false);
             dominantColorGlobal = intent.getStringExtra(Image.DOMINANT_COLOR);
@@ -119,20 +125,32 @@ public class FifteenActivity extends Activity {
 
     private boolean isGameWinnable() {
         //https://en.wikipedia.org/wiki/15_puzzle#Solvability
-        int inversionsNumber = 0;
-        int emptySpaceRow = -1;
-        int previousNumber = array[0][0];
+        //N = \sum_{i=1}^{15} n_i + e
+        int[] simpleArray = new int[16];
+        int k = 0;
+        int emptySpaceRow = -1; // e
         for (int i = 0; i < ROW_COUNT; i++) {
             for (int j = 0; j < COLUMN_COUNT; j++) {
-                if ((i > 0) || (j > 0)) {
-                    if (array[i][j] < previousNumber) inversionsNumber++;
-                    previousNumber = array[i][j];
-                }
                 if (array[i][j] == -1) {
-                    emptySpaceRow = i;
+                    emptySpaceRow = i + 1;
                 }
+                simpleArray[k] = array[i][j];
+                k++;
             }
         }
+        int inversionsNumber = 0; //sum (n_i)
+        for (int i = 0; i < ROW_COUNT * COLUMN_COUNT; i++) {
+            int previousNumber = simpleArray[i];
+            for (int j = i; j < ROW_COUNT * COLUMN_COUNT; j++) {
+                if ((simpleArray[j] < previousNumber) && (simpleArray[j] != -1)) {
+                    inversionsNumber++;
+                }
+            }
+
+        }
+        Log.d(TAG, "array  = " + Arrays.toString(simpleArray));
+        Log.d(TAG, "Inversions = " + inversionsNumber);
+        Log.d(TAG, "row = " + emptySpaceRow);
         return ((inversionsNumber + emptySpaceRow) % 2 == 0);
     }
 
