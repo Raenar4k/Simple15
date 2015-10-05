@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Environment;
+import android.util.AttributeSet;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
@@ -50,34 +51,51 @@ public class ImageAdapter extends BaseAdapter {
         return 0;
     }
 
+    public class ListRow extends RelativeLayout {
+        ImageView thumbnail;
+        TextView title;
+        ImageButton editButton;
+        ImageButton deleteButton;
+
+        public ListRow(Context context) {
+            super(context);
+            LayoutInflater.from(context).inflate(R.layout.listitem_image, this);
+            thumbnail = (ImageView) findViewById(R.id.imageThumbnail);
+            title = (TextView) findViewById(R.id.imageTitle);
+            editButton = (ImageButton) findViewById(R.id.editButton);
+            deleteButton = (ImageButton) findViewById(R.id.deleteButton);
+        }
+    }
+
     @Override
     public View getView(int itemIndex, View listItem, ViewGroup viewGroup) {
+        ListRow row;
         if (listItem == null) {
-            listItem = LayoutInflater.from(context).inflate(R.layout.listitem_image, null);
+            row = new ListRow(context);
+            listItem = row;
+        } else {
+            row = ((ListRow) listItem);
         }
+
 
         final int i = itemIndex;
         Image image = imageArrayList.get(i);
-        ImageView thumbnail = (ImageView) listItem.findViewById(R.id.imageThumbnail);
-        TextView title = (TextView) listItem.findViewById(R.id.imageTitle);
 
         if (image.isDefault()) {
             Picasso.with(context)
                     .load("file:///android_asset/" + image.getThumbnailPath())
-                    .into(thumbnail);
+                    .into(row.thumbnail);
         } else {
             Picasso.with(context)
                     .load(new File(image.getThumbnailPath()))
-                    .into(thumbnail);
+                    .into(row.thumbnail);
         }
 
         String s = image.getTitle();
-        title.setText(s);
+        row.title.setText(s);
 
-        ImageButton editButton = (ImageButton) listItem.findViewById(R.id.editButton);
-        ImageButton deleteButton = (ImageButton) listItem.findViewById(R.id.deleteButton);
 
-        editButton.setOnClickListener(new View.OnClickListener() {
+        row.editButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 ContextThemeWrapper wrapper = new ContextThemeWrapper(context, android.R.style.Theme_Holo_Dialog);
@@ -110,7 +128,7 @@ public class ImageAdapter extends BaseAdapter {
             }
         });
 
-        deleteButton.setOnClickListener(new View.OnClickListener() {
+        row.deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
