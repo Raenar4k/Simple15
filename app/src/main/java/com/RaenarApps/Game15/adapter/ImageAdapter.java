@@ -69,7 +69,7 @@ public class ImageAdapter extends BaseAdapter {
             editButton = (ImageButton) findViewById(R.id.editButton);
             deleteButton = (ImageButton) findViewById(R.id.deleteButton);
 
-            ContextThemeWrapper wrapper = new ContextThemeWrapper(context, android.R.style.Theme_Holo_Dialog);
+            ContextThemeWrapper wrapper = new ContextThemeWrapper(context, R.style.MyAppCompatDialog);
             editDialog = new Dialog(wrapper);
             editDialog.setContentView(R.layout.edit_dialog);
             editDialog.setTitle(wrapper.getString(R.string.item_edit_Title));
