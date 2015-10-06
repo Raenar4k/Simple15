@@ -128,6 +128,8 @@ public class ImageAdapter extends BaseAdapter {
                 });
                 row.editDialog.show();
 
+                //So the text is not ALL CAPS in Material theme
+                row.clearButton.setTransformationMethod(null);
                 row.clearButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
