@@ -114,7 +114,7 @@ public class ImageAdapter extends BaseAdapter {
                         ((ListActivity) context).imageList.get(i).setTitle(editText.getText().toString());
                         ((ListActivity) context).updateTitle(imagePath, editText.getText().toString());
                         notifyDataSetChanged();
-                        dialog.hide();
+                        dialog.dismiss();
                     }
                 });
                 dialog.show();
