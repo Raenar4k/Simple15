@@ -4,23 +4,24 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.os.Environment;
-import android.util.AttributeSet;
-import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.*;
+import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
 import com.RaenarApps.Game15.R;
 import com.RaenarApps.Game15.activity.ListActivity;
-import com.RaenarApps.Game15.helper.BitmapHelper;
 import com.RaenarApps.Game15.model.Image;
 import com.squareup.picasso.Picasso;
 
-import java.io.*;
+import java.io.File;
 import java.util.ArrayList;
 
 /**
@@ -61,7 +62,7 @@ public class ImageAdapter extends BaseAdapter {
         Button clearButton;
         EditText editText;
 
-        public ListRow(Context context,int i) {
+        public ListRow(Context context, int i) {
             super(context);
             LayoutInflater.from(context).inflate(R.layout.listitem_image, this);
             thumbnail = (ImageView) findViewById(R.id.imageThumbnail);
@@ -160,7 +161,6 @@ public class ImageAdapter extends BaseAdapter {
                         .show();
             }
         });
-
 
 
         return listItem;

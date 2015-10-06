@@ -1,6 +1,5 @@
 package com.RaenarApps.Game15.activity;
 
-import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
@@ -8,17 +7,18 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.*;
-import com.RaenarApps.Game15.*;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import com.RaenarApps.Game15.R;
 import com.RaenarApps.Game15.adapter.ImageAdapter;
 import com.RaenarApps.Game15.helper.DBHelper;
 import com.RaenarApps.Game15.model.Image;
 import com.RaenarApps.Game15.task.TaskAddImage;
 
-import java.io.*;
+import java.io.File;
 import java.util.ArrayList;
 
 public class ListActivity extends AppCompatActivity {
