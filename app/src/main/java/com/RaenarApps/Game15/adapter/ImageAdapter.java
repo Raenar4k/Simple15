@@ -56,22 +56,34 @@ public class ImageAdapter extends BaseAdapter {
         TextView title;
         ImageButton editButton;
         ImageButton deleteButton;
+        Dialog editDialog;
+        Button okButton;
+        Button clearButton;
+        EditText editText;
 
-        public ListRow(Context context) {
+        public ListRow(Context context,int i) {
             super(context);
             LayoutInflater.from(context).inflate(R.layout.listitem_image, this);
             thumbnail = (ImageView) findViewById(R.id.imageThumbnail);
             title = (TextView) findViewById(R.id.imageTitle);
             editButton = (ImageButton) findViewById(R.id.editButton);
             deleteButton = (ImageButton) findViewById(R.id.deleteButton);
+
+            ContextThemeWrapper wrapper = new ContextThemeWrapper(context, android.R.style.Theme_Holo_Dialog);
+            editDialog = new Dialog(wrapper);
+            editDialog.setContentView(R.layout.edit_dialog);
+            editDialog.setTitle(wrapper.getString(R.string.item_edit_Title));
+            editText = (EditText) editDialog.findViewById(R.id.editTitle);
+            okButton = (Button) editDialog.findViewById(R.id.okButton);
+            clearButton = (Button) editDialog.findViewById(R.id.clearButton);
         }
     }
 
     @Override
     public View getView(int itemIndex, View listItem, ViewGroup viewGroup) {
-        ListRow row;
+        final ListRow row;
         if (listItem == null) {
-            row = new ListRow(context);
+            row = new ListRow(context, itemIndex);
             listItem = row;
         } else {
             row = ((ListRow) listItem);
@@ -94,35 +106,31 @@ public class ImageAdapter extends BaseAdapter {
         String s = image.getTitle();
         row.title.setText(s);
 
-
+//        final Dialog editDialogF = row.editDialog;
+//        final Button okButtonF = row.okButton;
+//        final Button clearButtonF = row.clearButton;
+//        final EditText editTextF = row.editText;
         row.editButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ContextThemeWrapper wrapper = new ContextThemeWrapper(context, android.R.style.Theme_Holo_Dialog);
+                row.editText.setText(((ListActivity) context).imageList.get(i).getTitle());
 
-                final Dialog dialog = new Dialog(wrapper);
-                dialog.setContentView(R.layout.edit_dialog);
-                dialog.setTitle(wrapper.getString(R.string.item_edit_Title));
-                final EditText editText = (EditText) dialog.findViewById(R.id.editTitle);
-                editText.setText(((ListActivity) context).imageList.get(i).getTitle());
-
-                Button okButton = (Button) dialog.findViewById(R.id.okButton);
-                okButton.setOnClickListener(new View.OnClickListener() {
+                row.okButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         String imagePath = ((ListActivity) context).imageList.get(i).getImagePath();
-                        ((ListActivity) context).imageList.get(i).setTitle(editText.getText().toString());
-                        ((ListActivity) context).updateTitle(imagePath, editText.getText().toString());
+                        ((ListActivity) context).imageList.get(i).setTitle(row.editText.getText().toString());
+                        ((ListActivity) context).updateTitle(imagePath, row.editText.getText().toString());
                         notifyDataSetChanged();
-                        dialog.dismiss();
+                        row.editDialog.dismiss();
                     }
                 });
-                dialog.show();
-                Button clearButton = (Button) dialog.findViewById(R.id.clearButton);
-                clearButton.setOnClickListener(new View.OnClickListener() {
+                row.editDialog.show();
+
+                row.clearButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        editText.setText("");
+                        row.editText.setText("");
                     }
                 });
             }
