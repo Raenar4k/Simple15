@@ -1,6 +1,5 @@
 package com.RaenarApps.Game15.activity;
 
-import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
@@ -8,17 +7,18 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.*;
-import com.RaenarApps.Game15.*;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import com.RaenarApps.Game15.R;
 import com.RaenarApps.Game15.adapter.ImageAdapter;
 import com.RaenarApps.Game15.helper.DBHelper;
 import com.RaenarApps.Game15.model.Image;
 import com.RaenarApps.Game15.task.TaskAddImage;
 
-import java.io.*;
+import java.io.File;
 import java.util.ArrayList;
 
 public class ListActivity extends AppCompatActivity {
@@ -115,22 +115,22 @@ public class ListActivity extends AppCompatActivity {
     private void createImageList() {
         imageList = new ArrayList<Image>();
 
-        imageList.add(new Image("Mountains", "backgrounds/mountains.jpg", "thumbnails/thumbnail_mountains.jpg"));
-        imageList.add(new Image("Funny Cat", "backgrounds/funny_cat.jpg", "thumbnails/thumbnail_funny_cat.jpg"));
-        imageList.add(new Image("Pollen", "backgrounds/pollen.jpg", "thumbnails/thumbnail_pollen.jpg"));
-        imageList.add(new Image("Colors", "backgrounds/colors.jpg", "thumbnails/thumbnail_colors.jpg"));
+        imageList.add(new Image("Mountains", "backgrounds/mountains.webp", "thumbnails/thumbnail_mountains.webp"));
+        imageList.add(new Image("Funny Cat", "backgrounds/funny_cat.webp", "thumbnails/thumbnail_funny_cat.webp"));
+        imageList.add(new Image("Pollen", "backgrounds/pollen.webp", "thumbnails/thumbnail_pollen.webp"));
+        imageList.add(new Image("Colors", "backgrounds/colors.webp", "thumbnails/thumbnail_colors.webp"));
 
-        imageList.add(new Image("Blueberries", "backgrounds/blueberries.jpeg", "thumbnails/thumbnail_blueberries.jpg"));
-        imageList.add(new Image("Castle", "backgrounds/castle.jpg", "thumbnails/thumbnail_castle.jpg"));
-        imageList.add(new Image("Cherries", "backgrounds/cherries.jpeg", "thumbnails/thumbnail_cherries.jpg"));
-        imageList.add(new Image("Fruit", "backgrounds/fruit.jpeg", "thumbnails/thumbnail_fruit.jpg"));
-        imageList.add(new Image("Islands", "backgrounds/islands.jpeg", "thumbnails/thumbnail_islands.jpg"));
-        imageList.add(new Image("Apricots", "backgrounds/apricots.jpeg", "thumbnails/thumbnail_apricots.jpg"));
-        imageList.add(new Image("Milky Way", "backgrounds/milkyway.jpeg", "thumbnails/thumbnail_milky_way.jpg"));
-        imageList.add(new Image("Mountain Ridge", "backgrounds/mountains2.jpg", "thumbnails/thumbnail_mountain_ridge.jpg"));
-        imageList.add(new Image("Raspberry", "backgrounds/raspberry.jpeg", "thumbnails/thumbnail_raspberry.jpg"));
-        imageList.add(new Image("Space", "backgrounds/space.jpg", "thumbnails/thumbnail_space.jpg"));
-        imageList.add(new Image("Zen", "backgrounds/zen.jpg", "thumbnails/thumbnail_zen.jpg"));
+        imageList.add(new Image("Blueberries", "backgrounds/blueberries.webp", "thumbnails/thumbnail_blueberries.webp"));
+        imageList.add(new Image("Castle", "backgrounds/castle.webp", "thumbnails/thumbnail_castle.webp"));
+        imageList.add(new Image("Cherries", "backgrounds/cherries.webp", "thumbnails/thumbnail_cherries.webp"));
+        imageList.add(new Image("Fruit", "backgrounds/fruit.webp", "thumbnails/thumbnail_fruit.webp"));
+        imageList.add(new Image("Islands", "backgrounds/islands.webp", "thumbnails/thumbnail_islands.webp"));
+        imageList.add(new Image("Apricots", "backgrounds/apricots.webp", "thumbnails/thumbnail_apricots.webp"));
+        imageList.add(new Image("Milky Way", "backgrounds/milkyway.webp", "thumbnails/thumbnail_milky_way.webp"));
+        imageList.add(new Image("Mountain Ridge", "backgrounds/mountains2.webp", "thumbnails/thumbnail_mountain_ridge.webp"));
+        imageList.add(new Image("Raspberry", "backgrounds/raspberry.webp", "thumbnails/thumbnail_raspberry.webp"));
+        imageList.add(new Image("Space", "backgrounds/space.webp", "thumbnails/thumbnail_space.webp"));
+        imageList.add(new Image("Zen", "backgrounds/zen.webp", "thumbnails/thumbnail_zen.webp"));
 
         saveList();
     }
