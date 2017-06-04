@@ -59,7 +59,7 @@ public class FifteenActivity extends Activity {
     public ArrayList<Bitmap> chunkedImages = new ArrayList<Bitmap>(ROW_COUNT * COLUMN_COUNT);
     int textColor = Color.BLACK; //Color of a text on tiles. Can be changed in settings
 
-    final String backgroundColorDefault = "#f1122e06";
+    public static final String BACKGROUND_COLOR_DEFAULT = "#f1122e06";
 
     public String imagePathGlobal;
     private boolean isDefaultGlobal;
@@ -312,9 +312,9 @@ public class FifteenActivity extends Activity {
         View someView = findViewById(R.id.llButtonsLine);
         View root = someView.getRootView();
         if (adaptiveBackground && dominantColorGlobal != null) {
-            root.setBackgroundColor(Color.parseColor(dominantColorGlobal));
+            root.setBackgroundColor(Integer.parseInt(dominantColorGlobal));
         } else {
-            root.setBackgroundColor(Color.parseColor(backgroundColorDefault));
+            root.setBackgroundColor(Color.parseColor(BACKGROUND_COLOR_DEFAULT));
         }
         RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.rlContain);
         if (adaptiveBackground) {
