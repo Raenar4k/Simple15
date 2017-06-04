@@ -22,7 +22,9 @@ public class ColorHelper {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        sampledBitmap.recycle();
+        if (sampledBitmap!= null) {
+            sampledBitmap.recycle();
+        }
         return null;
     }
 
